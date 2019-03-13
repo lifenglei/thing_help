@@ -1,39 +1,28 @@
-//app.js
-App({
-    //生命周期函数--监听小程序初始化
-    //当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
-    onLaunch: function() {
-        // //调用API从本地缓存中获取数据
-        // var logs = wx.getStorageSync('logs') || []
-        // logs.unshift(Date.now())
-        // wx.setStorageSync('logs', logs)
-    },
-    // getUserInfo:function(cb){
-    //   var that = this
-    //   if(this.globalData.userInfo){
-    //     typeof cb == "function" && cb(this.globalData.userInfo)
-    //   }else{
-    //     //调用登录接口
-    //     wx.login({
-    //       success: function () {
-    //         wx.getUserInfo({
-    //           success: function (res) {
-    //             that.globalData.userInfo = res.userInfo
-    //             typeof cb == "function" && cb(that.globalData.userInfo)
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
-    // },
-    globalData: {
-        // userInfo:null
-        globalUrl: "http://www.tngou.net/api/cook/",
-        listName: null,
-        listId: null,
-        contentName:null,
-        contentId: null,
-        result:[]
+import { log, promiseHandle } from 'utils/util';
 
+App({
+    getUserInfo(cb) {
+        if (typeof cb !== "function") return;
+        let that = this;
+        if (that.globalData.userInfo) {
+            cb(that.globalData.userInfo);
+        } else {
+            promiseHandle(wx.login).then(() => promiseHandle(wx.getUserInfo)).then(res => {
+                that.globalData.userInfo = res.userInfo;
+                cb(that.globalData.userInfo);
+            }).catch(err => {
+                log(err);
+            });
+        }
+    },
+
+    globalData: {
+        userInfo: null
+    },
+
+    //自定义配置
+    settings: {
+        debug: true, //是否调试模式
+        moreLink: 'http://github.com/oopsguy'
     }
-})
+});  
