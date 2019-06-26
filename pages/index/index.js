@@ -19,7 +19,8 @@ Page({
     songVideo:'http://ptgfot33a.bkt.clouddn.com/003OUlho2HcRHC.mp3',
     poster:'http://y.gtimg.cn/music/photo_new/T002R300x300M000003RMaRI1iFoYd.jpg',
     name:'告白气球',
-    author:'周杰伦'
+    author:'周杰伦',
+    flag:false
 
   },
   //事件处理函数
@@ -45,8 +46,13 @@ Page({
       name:songInfo.title,
       author:songInfo.author
     })
-    this.audioCtx.play()
-   
+    if(!this.flag){
+      this.audioCtx.play()
+      this.flag=true
+    }else{
+      this.audioCtx.pause()
+      this.flag=false
+    }
   },
   //页面显示获取设备屏幕高度，以适配scroll-view组件高度
   onShow: function () {
