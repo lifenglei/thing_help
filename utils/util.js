@@ -33,19 +33,7 @@ function guid() {
     });
 }
 
-/**
- * 记录日志
- * @param {Mixed} 记录的信息
- * @returns {Void}
- */
-function log(msg) {
-    if (!msg) return;
-    if (getApp().settings['debug'])
-        console.log(msg);
-    let logs = wx.getStorageSync('logs') || [];
-    logs.unshift(msg)
-    wx.setStorageSync('logs', logs)
-}
+
 
 /**
  * @param {Function} func 接口
@@ -66,7 +54,6 @@ function promiseHandle(func, options) {
 module.exports = {
     formatTime: formatTime,
     guid: guid,
-    log: log,
     promiseHandle: promiseHandle,
     getDateStr: getDateStr,
     formatNumber: formatNumber

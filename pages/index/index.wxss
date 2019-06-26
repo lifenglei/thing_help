@@ -1,224 +1,205 @@
-@import "../../calendar/calendar.wxss";
-
-.wrapper {
-    padding-bottom: 160rpx;
+/**index.wxss**/
+.banners {
+  width: 100%;
+  height: 248rpx;
+  margin-bottom:14rpx;
+}
+.banners .wx-swiper-dot{
+  position:relative;
+  left:-440%;
+}
+.w200{
+  max-width:200rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.wrap{
+  font-size:12px;
+}
+.nick{
+  font-size:21px;
+}
+.banner{
+  position: relative;
+}
+.banner-nav{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.banner-image{
+  width: 100%;
+  height: 100%;
 }
 
-.show-date {
-    margin: 30rpx 0;
-    text-align: center;
-    font-size: 60rpx;
-    font-weight: lighter;
-    color: #E14848
+.banner-title{
+  color: #FFF;
+  position: absolute;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px; 
+  bottom: 30px;
+  font-size: 16px;
+   left: 0;
 }
 
-.common-list .item {
-    overflow: hidden
-}
-.common-list .item:active {
-    background: #333333
-}
-.common-list .item .inner {
-    position: relative;
-    border-top: 2rpx solid #333;
-    margin: 0 40rpx;
-    padding: 20rpx 0;
-    min-height: 100rpx;
+.sub-title{
+  color: #76787e;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  width: 100%;
+  font-size: 14px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-.common-list .header {
-    border-top: 2rpx solid #333;
-    margin: 0 40rpx;  
-    padding: 20rpx 0;
-    color: #AAA;
-    font-size: 30rpx;
+.news-item-container {
+  background-color: #f2f2f2;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-.common-list .item .icon {
-    position: absolute;
-    left: 0;
-    top: 20rpx;
-    width: 100rpx;
-    height: 100rpx;
-}
-.common-list .item .inner.with-check .checker {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    top: 10rpx;
-    bottom: 10rpx;
-    width: 80rpx;
-    border-right: 2rpx solid #333;
-}
-.common-list .item .inner.with-check .icon {
-    left: 100rpx;
-}
-.common-list .item .content {
-    margin-left: 130rpx;
-}
-.common-list .item .inner.with-check .content{
-    margin-left: 230rpx;
-}
-.common-list .item .title {
-    display: block;
-    overflow: hidden;
-    white-space:nowrap;
-    text-overflow: ellipsis;
-    font-weight: lighter;
-    font-size: 32rpx;
-    margin-top: 30rpx;
+.news-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-bottom: 1px solid #d0d0d0;
+  border-radius: 5px;
 }
 
-
-.mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, .5);
-    z-index: 1100;
+.news-item-right{
+  width: 80px;
+  height: 80px;
 }
 
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 600rpx;
-    min-height: 200rpx;
-    margin-left: -300rpx;
-    margin-top: -200rpx;
-    background-color: #FFF;
-    border-radius: 10rpx;
-    z-index: 1200;
-    color: #555;
-}
-.modal .content {
-    overflow: hidden;
-    padding: 40rpx;
-    font-size: 38rpx;
-    margin-bottom: 100rpx;
-}
-.modal .content .input {
-    padding: 20rpx;
-    font-size: 38rpx;
-    border: 2prx solid #E14848
-}
-.modal .footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100rpx;
-    border-radius: 0 0 10rpx 10rpx;
-    overflow: hidden;
-}
-.modal .footer .btn {
-    height: 100rpx;
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36rpx;
-    background-color: #EEE;
-    color: #555;
-}
-.modal .footer .btn:active {
-    background-color: #DDD;
+.news-image{
+  width: 80px;
+  height: 80px;
 }
 
-.modal .level {
-    display: flex;
-    align-items: center;
-    font-size: 32rpx;
-    padding: 20rpx;
-}
-.modal .level icon {
-    margin-left: 20rpx;
+.news-item-title{
+  font-size: 16px;
 }
 
-/*action sheet*/
-.actionItem  {
-    color: #555;
-    font-size: 36rpx;
+.load-btn{
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: block;
+  line-height: 2.3;
+  font-size: 13px;
+  padding: 0 1.34em;
 }
-.actionItem.cancel {
-    color: #888
+.weui-grids image{
+  width:100%;
+  height:400rpx;
 }
-
-
-/*update panel style*/
-.updatePanel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: #000;
-    overflow: hidden;
-    z-index: 1000
+.list-wrap{
+  width:100%;
 }
-.updatePanel .title {
-    font-size: 48rpx;
-    font-weight: lighter;
-    text-align: center;
-    padding: 20rpx 0;
-    margin-bottom: 20rpx;
+.link-home{
+  margin-bottom:14rpx;
 }
-.updatePanel input,
-.updatePanel textarea {
-    background: #222;
-    padding: 20rpx;
-    font-size: 36rpx;
-    width: auto;
-    color: #CCC;
+.link-home image{
+  width:100%;
 }
-.updatePanel textarea {
-    border-top: 2rpx solid #333;
+.meet{
+  width:168rpx;
+  height:48rpx;
+  text-align:center;
+  border-radius:30rpx;
+  line-height:48rpx;
+  margin-right:32rpx;
+  background:#FA8746;
 }
-
-.updatePanel .level {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 100rpx;
-    bottom: 100rpx;
-    border-top: 2rpx solid #333;
-    padding: 20rpx 0;
+.info-wrap{
+  padding-left:32rpx;
+  height:100rpx;
+}
+.price{
+  margin-right:40rpx;
+}
+.info-wrap text:nth-child(1){
+  margin-right:16rpx;
+}
+.mao-info{
+  background: url(http://img2.inke.cn/MTUyMTc4Mjc0MzI3NyM5NzQjanBn.jpg) no-repeat;
+  position:relative;
+  margin-top:-110rpx; 
+  color:#fff;
+  background-size:100% 100%;
+}
+.mr74{
+  margin-top:28rpx;
+  font-size:16px;
+}
+.age{
+  display: inline-block;
+  width: 76rpx;
+  margin: 37rpx 0 0 15rpx;
+  color: #fff;
+  font-weight: normal;
+  border-radius: 4rpx;
+  text-align:center;
+  text-indent:35rpx;
+}
+.woman{
+    background: url(https://img2.inke.cn/MTUxMDI5ODkxNDgwNyM2NjYjanBn.jpg) no-repeat 4px center;
+    background-color: #F7529E;
+    background-size: 10px;
+}
+.man {
+    background: url(http://img2.inke.cn/MTUxNjkzNDk4MTU0MCMyODUjanBn.jpg) no-repeat 4px center;
+    background-color: #07aefc;
+    background-size: 10px;
+}
+.player-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160rpx;
+  box-shadow: 0 0 10rpx #ccc;
+  background-color: #fff; }
+  .player-wrap .player-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-.updatePanel .level .item {
-    width: 50rpx;
-    height: 50rpx;
-    border-radius: 50%;
-    margin: 0 60rpx;
-}
-.updatePanel .footer {
-    position: absolute;
-    display: flex;
-    left: 0;
-    height: 100rpx;
-    right: 0;
-    bottom: 0;
-    border-top: 2rpx solid #333;
-}
-.updatePanel .footer .btn {
-    flex: 1;
-    text-align: center;
-    line-height: 100rpx;
-    font-size: 36rpx;
-    color: #DDD;
-}
-.updatePanel .footer .btn:active {
-    background: #333;
-}
-.updatePanel .footer .btn.primary {
-    background: #E14848;
-}
-.updatePanel .footer .btn.primary:active {
-    background: #D64343
-}
+    height: 100%; }
+    .player-wrap .player-item .pic {
+      position: relative;
+      width: 140rpx;
+      height: 140rpx;
+      margin-right: 10rpx;
+      overflow: hidden;
+      cursor: pointer; }
+      .player-wrap .player-item .pic img {
+        width: 100%;
+        display: block; }
+      .player-wrap .player-item .pic:after {
+        position: absolute;
+        content: '查看详情';
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: rgba(251, 251, 251, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24rpx; }
+    .player-wrap .player-item audio {
+      flex: 1; }
