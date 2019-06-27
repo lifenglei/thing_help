@@ -19,7 +19,7 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(54, 43, 41, 0.1);
+  background-color: rgb(107, 73, 96);
 }
 /*3*/
 .rotate-disk-container{
@@ -172,7 +172,7 @@
   margin: 0 0 0 30rpx;
 }
 .list-one-choose{
-  background-color: rgba(54, 43, 41, 0.6);
+  background-color:#E14848;
 }
 .list-index{
   display: block;

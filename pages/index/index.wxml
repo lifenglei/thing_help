@@ -24,7 +24,7 @@
       </view>
       <image src="../../images/list.png" class="icon-list" bindtap="bindTapList"></image>
     </view>
-    <view class="slider-container">
+    <!-- <view class="slider-container">
       <text class="slider-time">{{currentPosition === 0 ? '' : currentPosition}}</text>
       <slider
           value="{{sliderValue}}"
@@ -35,7 +35,7 @@
           block-color="#13beec"
         />
       <text class="slider-time">{{duration === 0 ? '' : duration}}</text>
-    </view>
+    </view> -->
     <view class="operation-container">
       <image src="../../images/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
       <image
@@ -59,9 +59,9 @@
         hover-class="list-one-choose"
         bindtap="bindTapChoose"
         >
-        <view class="name">
+        <!-- <view class="name">
           <text class="list-index">{{index}}</text>
-        </view>
+        </view> -->
         <image class="list-one-poster" src="{{item.pic}}"></image>
         <view class="list-one-right">
           <view class="name">{{item.title}}</view>
@@ -70,5 +70,5 @@
       </view>
     </view>
   </scroll-view>
-  <audio id="audio" src="{{'http://ptgfot33a.bkt.clouddn.com/'+audioList[audioIndex].songid+'.mp3'}}" style="display: none"></audio>
+  <audio id="audio" src="{{'http://ptgfot33a.bkt.clouddn.com/'+audioList[audioIndex].songid+'.mp3'}}" style="display: none" loop></audio>
 </view>

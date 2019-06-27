@@ -7,7 +7,7 @@ Page({
     audioList: audioList,
     audioIndex: 0,
     pauseStatus: true,
-    listShow: false,
+    listShow: true,
     timer: '',
     currentPosition: 0,
     duration:0,    
@@ -33,19 +33,28 @@ Page({
     let that = this
     console.log(e.detail.value)
     wx.getBackgroundAudioPlayerState({
-      success: function (res) {
-        console.log(res)
-        let {status, duration} = res
-        if (status === 1 || status === 0) {
-          that.setData({
-            sliderValue: value
-          })
-          wx.seekBackgroundAudio({
-              position: value * duration / 100,
-          })
-        }
+      success(res) {
+        const status = res.status
+        const dataUrl = res.dataUrl
+        const currentPosition = res.currentPosition
+        const duration = res.duration
+        const downloadPercent = res.downloadPercent
       }
     })
+    // wx.getBackgroundAudioPlayerState({
+    //   success: function (res) {
+    //     console.log(res)
+    //     let {status, duration} = res
+    //     if (status === 1 || status === 0) {
+    //       that.setData({
+    //         sliderValue: value
+    //       })
+    //       wx.seekBackgroundAudio({
+    //           position: value * duration / 100,
+    //       })
+    //     }
+    //   }
+    // })
   },
   bindTapPrev: function() {
     console.log('bindTapPrev')
