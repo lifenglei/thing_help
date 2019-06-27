@@ -66,7 +66,7 @@ Page({
     let that = this
     setTimeout(() => {
         this.audioCtx.play()
-    }, 1000)
+    }, 200)
     wx.setStorageSync('audioIndex', audioIndexNow)
   },
   bindTapNext: function() {
@@ -90,7 +90,7 @@ Page({
       if (that.data.pauseStatus === false) {
         this.audioCtx.play()
       }
-    }, 1000)
+    }, 200)
     wx.setStorageSync('audioIndex', audioIndexNow)
   },
   bindTapPlay: function() {
@@ -124,7 +124,7 @@ Page({
       if (that.data.pauseStatus === false) {
         this.audioCtx.play()
       }
-    }, 1000)
+    }, 200)
     wx.setStorageSync('audioIndex', parseInt(e.currentTarget.id, 10))
   },
   play() {
@@ -137,7 +137,7 @@ Page({
     let that = this
     let timer = setInterval(function() {
       that.setDuration(that)
-    }, 1000)
+    }, 200)
     this.setData({timer: timer})
   },
   setDuration(that) {
@@ -177,7 +177,7 @@ Page({
   onShareAppMessage: function () {
     let that = this
     return {
-      title: 'light轻音乐：' + that.data.audioList[that.data.audioIndex].name,
+      title: 'light轻音乐：' + that.data.audioList[that.data.audioIndex].title,
       success: function(res) {
         wx.showToast({
           title: '分享成功',
