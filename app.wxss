@@ -1,77 +1,11 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
-.fl{
-  float:left;
-}
-.fr{
-  float:right;
-}
-.clearfix:after {clear: both;
-    display: block;
-    visibility: hidden;
-    overflow: hidden;
-    height: 0;
-    content: "clear"
-}
-  page .wx-swiper-dots.wx-swiper-dots-horizontal{
-     margin-left:200rpx;
-  }
-.fix-iphonex-button {
-    bottom:68rpx!important;
-}
-.fix-iphonex-button::after {
-    content: ' ';
-    position: fixed;
-    bottom: 0!important;
-    height: 68rpx!important;
-    width: 100%;
-    background: #fff;
-}
-.icon{
-  width:54rpx;
-  height: 54rpx;
-}
-.tabBar{
-  width:100%;
-  position: fixed;
-  bottom:0;
-  padding:10rpx;
-  margin-left:-4rpx;
-  background:#fff;
-  font-size:20rpx;
-  color:#8A8A8A;
-  box-shadow: 6rpx 6rpx 6rpx 6rpx #aaa;
-  z-index:2;
-  display:flex;
+page{
+  height:100%;
 }
 
- .tabBar-item{
-  flex:1;
-  text-align: center;
-  overflow: hidden;
-  position:relative;
+.name{
+  font-size: 40rpx;
 }
-/*当前字体颜色*/
-.tabBartext{
-  color:red;
-}
-.unread{
-  display:inline-block;
-width:30rpx;
-height:30rpx;
-background:red;
-border-radius:90%;
-color:#fff;
-position:absolute;
-top:0;
-right:70rpx;
-
+.author{
+  font-size: 30rpx;
 }

@@ -1,44 +1,74 @@
 <!--index.wxml-->
-<!-- <import src="../../template/template.wxml"/> -->
-<!-- <template is="tabBar" data="{{tabBar:bindData.tabBar,unread:unread}}"/> -->
-<view class="wrap">
-  <!-- <web-view src="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes">我的</web-view> -->
-  <scroll-view  scroll-top="{{scrollTop}}" scroll-y="true"style="height:{{scrollHeight}};">
-      <!-- <swiper indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}" class="banners" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{banner}}"wx:key="*this">
-      <swiper-item class="banner" >
-          <navigator class="banner-nav" url="../webview/webview?link={{item.link}}">
-            <image 
-            src="{{item.image}}" 
-            class="banner-image" 
-            width="100%" 
-            height="100%"
-            />
-          </navigator>
-      </swiper-item>
-    </block>
-  </swiper> -->
-  <!--九宫格展示数据-->
-  <view class="page">
-    <view class="page__bd">
-        <view class="list-wrap">
-            <block wx:for="{{girlList}}" wx:for-item="itemName" wx:key="*this">
-                <view bindtap="gotoSong" data-index="{{itemName}}" class="link-home" hover-class="none">
-                    <image src="{{itemName.pic}}"mode="widthFix"  lazy-load="true" />
-                    <view class="mao-info">
-                      <view class="clearfix info-wrap">
-                        <text class="nick fl mr74 w200">{{itemName.title}}</text>
-                        <!-- <text class="age fl {{itemName.gender==2?'woman':itemName.gender==3?'hidden':'man'}}"><text class="girl-age">{{itemName.age}}</text></text> -->
-                        <text class="meet fr mr74">{{itemName.author}}</text>
-                      </view>
-                    </view>
-                    
-                </view>
-            </block>
-        </view>
+<view class="container">
+  <!--第一层层：背景图背景图，高斯模糊-->
+  <view class="bg">
+    <image class="poster" mode="scaleToFill" src="{{audioList[audioIndex].poster}}"></image>
+  </view>
+  <!--第二层层：灰色蒙层-->
+  <view class="bg-gray">
+  </view>
+  <!--第三层：player层-->
+  <view style="display: {{listShow === true ? 'none' : ''}}">
+    <!--旋转图-->
+    <view class="rotate-disk-container">
+      <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
+        <image class="poster" src="{{audioList[audioIndex].pic}}"></image>
+      </view>
     </view>
-</view>
-<view class="player-wrap"><view class="player-item"><view class="pic"><image src="{{songPic}}" mode="scaleToFill" alt=""/></view> <audio controls="controls" poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{songVideo}}" id="myAudio" ></audio></view></view>
+    <!--操作-->
+    <view class="title-container">
+      <view class="title-left"></view>
+      <view class="text">
+        <view><text class="name">{{audioList[audioIndex].title}}</text></view>
+        <!--<view><text class="author">-- {{audioList[audioIndex].author}} --</text></view>-->
+      </view>
+      <image src="../../images/list.png" class="icon-list" bindtap="bindTapList"></image>
+    </view>
+    <view class="slider-container">
+      <text class="slider-time">{{currentPosition === 0 ? '' : currentPosition}}</text>
+      <slider
+          value="{{sliderValue}}"
+          bindchange="bindSliderchange"
+          activeColor="#13beec"
+          style="width: 62%;margin: 0;"
+          block-size="12"
+          block-color="#13beec"
+        />
+      <text class="slider-time">{{duration === 0 ? '' : duration}}</text>
+    </view>
+    <view class="operation-container">
+      <image src="../../images/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
+      <image
+        src="{{pauseStatus === false ? '../../images/pause.png' : '../../images/play.png'}}"
+        class="icon-play" bindtap="bindTapPlay"
+        >
+        </image>
+      <image src="../../images/next.png" class="icon-next" bindtap="bindTapNext"></image>
+    </view>
+  </view>
+  <!--第五层：列表页-->
+  <scroll-view
+    class="list"
+    scroll-y style="display: {{listShow === true ? '' : 'none'}}"
+    scroll-top="{{audioIndex * 68}}"
+    >
+    <view wx:for="{{audioList}}" wx:key="{{index}}">
+      <view
+        id="{{index}}"
+        class="list-one {{index === audioIndex ? 'list-one-choose' : ''}}"
+        hover-class="list-one-choose"
+        bindtap="bindTapChoose"
+        >
+        <view class="name">
+          <text class="list-index">{{index}}</text>
+        </view>
+        <image class="list-one-poster" src="{{item.pic}}"></image>
+        <view class="list-one-right">
+          <view class="name">{{item.title}}</view>
+          <view class="author">歌手：{{item.author}}</view>
+        </view>
+      </view>
+    </view>
   </scroll-view>
+  <audio id="audio" src="{{'http://ptgfot33a.bkt.clouddn.com/'+audioList[audioIndex].songid+'.mp3'}}" style="display: none"></audio>
 </view>

@@ -1,4 +1,4 @@
-const songList=[
+const audioList=[
   
     {
       "type": "qq",
@@ -3547,4 +3547,4 @@ const songList=[
       "pic": "http://y.gtimg.cn/music/photo_new/T002R300x300M000001ynQ1Y2CZts8.jpg"
     }
   ]
-export { songList}
+export { audioList}

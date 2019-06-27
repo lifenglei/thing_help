@@ -1,86 +1,197 @@
 //index.js
 //获取应用实例
+import {audioList} from '../../datas/song.js'
 var app = getApp()
-import { songList} from '../../datas/song.js'
 Page({
   data: {
-    duration: 1000,
-    indicatorDots: true,
-    autoplay: true,
-    interval: 2000,
-    plain: false,
-    scrollTop: 0,
-    girlList: [],
-    arr: [],
-    src: '',
-    srollHeight: 0,
-    banner: [],
-    songPic:'http://y.gtimg.cn/music/photo_new/T002R300x300M000003RMaRI1iFoYd.jpg',
-    songVideo:'http://ptgfot33a.bkt.clouddn.com/003OUlho2HcRHC.mp3',
-    poster:'http://y.gtimg.cn/music/photo_new/T002R300x300M000003RMaRI1iFoYd.jpg',
-    name:'告白气球',
-    author:'周杰伦',
-    flag:false
-
+    audioList: audioList,
+    audioIndex: 0,
+    pauseStatus: true,
+    listShow: false,
+    timer: '',
+    currentPosition: 0,
+    duration:0,    
   },
-  //事件处理函数
-  onLoad() {
-    this.setData({
-      girlList: songList
-    })
-    this.audioCtx = wx.createAudioContext('myAudio')
-  },
-  onUnload() {
-
-  },
-  onHide() {
-
-  },
-  gotoSong(e){
-    console.log(e)
-    var songInfo = e.currentTarget.dataset.index
-    this.setData({
-      songPic:songInfo.pic,
-      songVideo:`http://ptgfot33a.bkt.clouddn.com/${songInfo.songid}.mp3`,
-      poster:songInfo.pic,
-      name:songInfo.title,
-      author:songInfo.author
-    })
-    if(!this.flag){
-      this.audioCtx.play()
-      this.flag=true
-    }else{
-      this.audioCtx.pause()
-      this.flag=false
+  onLoad: function () {
+    console.log('onLoad')
+    console.log(this.data.audioList.length)
+    //  获取本地存储存储audioIndex
+    var audioIndexStorage = wx.getStorageSync('audioIndex')
+    console.log(audioIndexStorage)
+    if (audioIndexStorage) {
+      this.setData({audioIndex: audioIndexStorage}) 
     }
   },
-  //页面显示获取设备屏幕高度，以适配scroll-view组件高度
-  onShow: function () {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          scrollHeight: res.windowHeight
-        });
+  onReady: function (e) {
+    console.log('onReady')
+    // 使用 wx.createAudioContext 获取 audio 上下文 context
+    this.audioCtx = wx.createAudioContext('audio')
+  },
+  bindSliderchange: function(e) {
+    // clearInterval(this.data.timer)
+    let value = e.detail.value
+    let that = this
+    console.log(e.detail.value)
+    wx.getBackgroundAudioPlayerState({
+      success: function (res) {
+        console.log(res)
+        let {status, duration} = res
+        if (status === 1 || status === 0) {
+          that.setData({
+            sliderValue: value
+          })
+          wx.seekBackgroundAudio({
+              position: value * duration / 100,
+          })
+        }
       }
     })
-    if (app.globalData.zhubo != null) {
-      app.globalData.zhubo = {}
+  },
+  bindTapPrev: function() {
+    console.log('bindTapPrev')
+    let length = this.data.audioList.length
+    let audioIndexPrev = this.data.audioIndex
+    let audioIndexNow = audioIndexPrev
+    if (audioIndexPrev === 0) {
+      audioIndexNow = length - 1
+    } else {
+      audioIndexNow = audioIndexPrev - 1
     }
-    console.log(app.globalData)
-  },
-  scroll: function (event) {
     this.setData({
-      scrollTop: event.detail.scrollTop
-    });
+      audioIndex: audioIndexNow,
+      sliderValue: 0,
+      currentPosition: 0,
+      duration:0, 
+    })
+    let that = this
+    setTimeout(() => {
+        this.audioCtx.play()
+    }, 1000)
+    wx.setStorageSync('audioIndex', audioIndexNow)
   },
-  /**
-* 用户点击右上角分享
-*/
+  bindTapNext: function() {
+    console.log('bindTapNext')
+    let length = this.data.audioList.length
+    let audioIndexPrev = this.data.audioIndex
+    let audioIndexNow = audioIndexPrev
+    if (audioIndexPrev === length - 1) {
+      audioIndexNow = 0
+    } else {
+      audioIndexNow = audioIndexPrev + 1
+    }
+    this.setData({
+      audioIndex: audioIndexNow,
+      sliderValue: 0,
+      currentPosition: 0,
+      duration:0, 
+    })
+    let that = this
+    setTimeout(() => {
+      if (that.data.pauseStatus === false) {
+        this.audioCtx.play()
+      }
+    }, 1000)
+    wx.setStorageSync('audioIndex', audioIndexNow)
+  },
+  bindTapPlay: function() {
+    console.log('bindTapPlay')
+    console.log(this.data.pauseStatus)
+    if (this.data.pauseStatus === true) {
+      this.audioCtx.play()
+      this.setData({pauseStatus: false})
+    } else {
+      this.audioCtx.pause()
+      wx.pauseBackgroundAudio()
+      this.setData({pauseStatus: true})
+    }
+  },
+  bindTapList: function(e) {
+    console.log('bindTapList')
+    console.log(e)
+    this.setData({
+      listShow: true
+    })
+  },
+  bindTapChoose: function(e) {
+    console.log('bindTapChoose')
+    console.log(e)
+    this.setData({
+      audioIndex: parseInt(e.currentTarget.id, 10),
+      listShow: false
+    })
+    let that = this
+    setTimeout(() => {
+      if (that.data.pauseStatus === false) {
+        this.audioCtx.play()
+      }
+    }, 1000)
+    wx.setStorageSync('audioIndex', parseInt(e.currentTarget.id, 10))
+  },
+  play() {
+    let {audioList, audioIndex} = this.data
+    wx.playBackgroundAudio({
+      dataUrl: audioList[audioIndex].src,
+      title: audioList[audioIndex].name,
+      coverImgUrl: audioList[audioIndex].poster
+    })
+    let that = this
+    let timer = setInterval(function() {
+      that.setDuration(that)
+    }, 1000)
+    this.setData({timer: timer})
+  },
+  setDuration(that) {
+    wx.getBackgroundAudioPlayerState({
+      success: function (res) {
+        console.log(res)
+        let {status, duration, currentPosition} = res
+        if (status === 1 || status === 0) {
+          that.setData({
+            currentPosition: that.stotime(currentPosition),
+            duration: that.stotime(duration),
+            sliderValue: Math.floor(currentPosition * 100 / duration),
+          })
+        }
+      }
+    })
+  },
+  stotime: function(s) {
+    let t = '';
+    if(s > -1) {
+      // let hour = Math.floor(s / 3600);
+      let min = Math.floor(s / 60) % 60;
+      let sec = s % 60;
+      // if (hour < 10) {
+      //   t = '0' + hour + ":";
+      // } else {
+      //   t = hour + ":";
+      // }
+
+      if (min < 10) { t += "0"; }
+      t += min + ":";
+      if (sec < 10) { t += "0"; }
+      t += sec;
+    }
+    return t;
+  },
   onShareAppMessage: function () {
-    // return {
-    //   title: '月猫约玩微信小程序',
-    //   desc: '主播最多的交友平台!',
-    //   path: '/page/index'
-    // }
+    let that = this
+    return {
+      title: 'light轻音乐：' + that.data.audioList[that.data.audioIndex].name,
+      success: function(res) {
+        wx.showToast({
+          title: '分享成功',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+      fail: function(res) {
+        wx.showToast({
+          title: '分享失败',
+          icon: 'cancel',
+          duration: 2000
+        })
+      }
+    }
   }
 })
