@@ -26,13 +26,14 @@ Page({
     this.setData({
       audioIndex:options.index
     })
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    this.setSong(this.data.audioIndex)
   },
   bindTapNext: function () {
     console.log('bindTapNext')
@@ -88,7 +89,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setSong(this.data.audioIndex)
+    
   },
   bindTapList(){
     wx.navigateTo({
@@ -124,7 +125,8 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+    console.log('hide')
+    this.bindTapPlay()
   },
 
   /**
