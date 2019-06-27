@@ -1,17 +1,31 @@
+
+var app = getApp();
+var backgroundAudioManager = null
+var songid = null
+import { audioList } from '../../datas/song.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    pic:'',
+    title:'',
+    pauseStatus:false,
+    audioList: audioList,
+    audioIndex: 0,
+    currentPosition: 0,
+    duration: 0,    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    songid = options.songid
+    this.setData({
+      audioIndex:options.index
+    })
   },
 
   /**
@@ -20,12 +34,90 @@ Page({
   onReady: function () {
     
   },
+  bindTapNext: function () {
+    console.log('bindTapNext')
+    let length = this.data.audioList.length
+    let audioIndexPrev = this.data.audioIndex
+    let audioIndexNow = audioIndexPrev
+    if (audioIndexPrev === length - 1) {
+      audioIndexNow = 0
+    } else {
+      audioIndexNow = ~~audioIndexPrev + 1
+    }
+    console.log(audioIndexNow)
+    this.setSong(audioIndexNow)
+    this.setData({
+      audioIndex: audioIndexNow
+    })
+    wx.clearStorageSync()
+    wx.setStorageSync('autoIndex', audioIndexNow)
+  },
+  bindTapPrev: function () {
+    console.log('bindTapPrev')
+    let length = this.data.audioList.length
+    let audioIndexPrev = this.data.audioIndex
+    let audioIndexNow = audioIndexPrev
+    if (audioIndexPrev === 0) {
+      audioIndexNow = length - 1
+    } else {
+      audioIndexNow = audioIndexPrev - 1
+    }
+    this.setSong(audioIndexNow)
+    this.setData({
+      audioIndex: audioIndexNow
+    })
+    console.log(audioIndexNow)
+    wx.clearStorageSync()
+    wx.setStorageSync('autoIndex', audioIndexNow)
+  },
+  bindTapPlay: function () {
+    console.log('bindTapPlay')
+    console.log(this.data.pauseStatus)
+    if (this.data.pauseStatus === true) {
+      backgroundAudioManager.play()
+      this.setData({ pauseStatus: false })
+    } else {
+      console.log(backgroundAudioManager)
+      backgroundAudioManager.pause()
+      wx.pauseBackgroundAudio()
+      this.setData({ pauseStatus: true })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.setSong(this.data.audioIndex)
+  },
+  bindTapList(){
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+  setSong(index){
+    backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.title = this.data.audioList[index].title
+    backgroundAudioManager.epname = this.data.audioList[index].title
+    backgroundAudioManager.singer = this.data.audioList[index].author
+    backgroundAudioManager.coverImgUrl = this.data.audioList[index].pic
+    this.setData({
+      pic: this.data.audioList[index].pic,
+      title: this.data.audioList[index].title
+    })
+    // 设置了 src 之后会自动播放
+    backgroundAudioManager.src = `http://ptgfot33a.bkt.clouddn.com/${this.data.audioList[index].songid}.mp3`
+    this.setData({
+      duration: backgroundAudioManager.duration||0
+    })
+    console.log(backgroundAudioManager.duration)
+    backgroundAudioManager.onEnded(()=>{
+      console.log('结束')
+      this.setSong(index)
+    })
+    // backgroundAudioManager.onPlay(()=>{
+    //   console.log(backgroundAudioManager.duration)
+    // })
   },
 
   /**

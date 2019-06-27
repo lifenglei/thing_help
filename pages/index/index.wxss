@@ -152,7 +152,6 @@
   top: 0;
   height: 100%;
   width: 100%;
-  color: #fff;
 }
 .list-one{
   height: 160rpx;
@@ -173,6 +172,7 @@
 }
 .list-one-choose{
   background-color:#E14848;
+  color:#fff;
 }
 .list-index{
   display: block;

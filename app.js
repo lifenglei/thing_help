@@ -17,7 +17,8 @@ App({
     },
 
     globalData: {
-        userInfo: null
+        userInfo: null,
+        index:0
     },
 
     //自定义配置

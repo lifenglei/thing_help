@@ -5,194 +5,56 @@ var app = getApp()
 Page({
   data: {
     audioList: audioList,
-    audioIndex: 0,
     pauseStatus: true,
     listShow: true,
-    timer: '',
-    currentPosition: 0,
-    duration:0,    
+    timer: ''
   },
   onLoad: function () {
     console.log('onLoad')
-    console.log(this.data.audioList.length)
-    //  获取本地存储存储audioIndex
-    var audioIndexStorage = wx.getStorageSync('audioIndex')
-    console.log(audioIndexStorage)
-    if (audioIndexStorage) {
-      this.setData({audioIndex: audioIndexStorage}) 
-    }
+   
   },
   onReady: function (e) {
     console.log('onReady')
-    // 使用 wx.createAudioContext 获取 audio 上下文 context
-    this.audioCtx = wx.createAudioContext('audio')
+
+  },
+  onShow(){
+    this.setData({
+      audioIndex: wx.getStorageSync('autoIndex')||0
+    })
+  },
+  onHide: function () {
+    // 生命周期函数--监听页面隐藏
+    console.log("test1 onHide");
+
+  },
+  onUnload: function () {
+    // 生命周期函数--监听页面卸载
+    console.log("test1 onUnload");
   },
   bindSliderchange: function(e) {
-    // clearInterval(this.data.timer)
-    let value = e.detail.value
-    let that = this
-    console.log(e.detail.value)
-    wx.getBackgroundAudioPlayerState({
-      success(res) {
-        const status = res.status
-        const dataUrl = res.dataUrl
-        const currentPosition = res.currentPosition
-        const duration = res.duration
-        const downloadPercent = res.downloadPercent
-      }
-    })
-    // wx.getBackgroundAudioPlayerState({
-    //   success: function (res) {
-    //     console.log(res)
-    //     let {status, duration} = res
-    //     if (status === 1 || status === 0) {
-    //       that.setData({
-    //         sliderValue: value
-    //       })
-    //       wx.seekBackgroundAudio({
-    //           position: value * duration / 100,
-    //       })
-    //     }
-    //   }
-    // })
-  },
-  bindTapPrev: function() {
-    console.log('bindTapPrev')
-    let length = this.data.audioList.length
-    let audioIndexPrev = this.data.audioIndex
-    let audioIndexNow = audioIndexPrev
-    if (audioIndexPrev === 0) {
-      audioIndexNow = length - 1
-    } else {
-      audioIndexNow = audioIndexPrev - 1
-    }
-    this.setData({
-      audioIndex: audioIndexNow,
-      sliderValue: 0,
-      currentPosition: 0,
-      duration:0, 
-    })
-    let that = this
-    setTimeout(() => {
-        this.audioCtx.play()
-    }, 200)
-    wx.setStorageSync('audioIndex', audioIndexNow)
-  },
-  bindTapNext: function() {
-    console.log('bindTapNext')
-    let length = this.data.audioList.length
-    let audioIndexPrev = this.data.audioIndex
-    let audioIndexNow = audioIndexPrev
-    if (audioIndexPrev === length - 1) {
-      audioIndexNow = 0
-    } else {
-      audioIndexNow = audioIndexPrev + 1
-    }
-    this.setData({
-      audioIndex: audioIndexNow,
-      sliderValue: 0,
-      currentPosition: 0,
-      duration:0, 
-    })
-    let that = this
-    setTimeout(() => {
-      if (that.data.pauseStatus === false) {
-        this.audioCtx.play()
-      }
-    }, 200)
-    wx.setStorageSync('audioIndex', audioIndexNow)
-  },
-  bindTapPlay: function() {
-    console.log('bindTapPlay')
-    console.log(this.data.pauseStatus)
-    if (this.data.pauseStatus === true) {
-      this.audioCtx.play()
-      this.setData({pauseStatus: false})
-    } else {
-      this.audioCtx.pause()
-      wx.pauseBackgroundAudio()
-      this.setData({pauseStatus: true})
-    }
-  },
-  bindTapList: function(e) {
-    console.log('bindTapList')
-    console.log(e)
-    this.setData({
-      listShow: true
-    })
+
   },
   bindTapChoose: function(e) {
-    console.log('bindTapChoose')
     console.log(e)
-    this.setData({
-      audioIndex: parseInt(e.currentTarget.id, 10),
-      listShow: false
+    app.globalData.userInfo = e.currentTarget.dataset.obj
+    app.globalData.index = e.currentTarget.dataset.index
+    console.log(app.globalData.userInfo)
+    wx.navigateTo({
+      url: `/pages/detail/detail?songid=${e.currentTarget.dataset.obj.songid}&index=${e.currentTarget.dataset.index}`,
     })
-    let that = this
-    setTimeout(() => {
-      if (that.data.pauseStatus === false) {
-        this.audioCtx.play()
-      }
-    }, 200)
-    wx.setStorageSync('audioIndex', parseInt(e.currentTarget.id, 10))
-  },
-  play() {
-    let {audioList, audioIndex} = this.data
-    wx.playBackgroundAudio({
-      dataUrl: audioList[audioIndex].src,
-      title: audioList[audioIndex].name,
-      coverImgUrl: audioList[audioIndex].poster
-    })
-    let that = this
-    let timer = setInterval(function() {
-      that.setDuration(that)
-    }, 200)
-    this.setData({timer: timer})
-  },
-  setDuration(that) {
-    wx.getBackgroundAudioPlayerState({
-      success: function (res) {
-        console.log(res)
-        let {status, duration, currentPosition} = res
-        if (status === 1 || status === 0) {
-          that.setData({
-            currentPosition: that.stotime(currentPosition),
-            duration: that.stotime(duration),
-            sliderValue: Math.floor(currentPosition * 100 / duration),
-          })
-        }
-      }
-    })
-  },
-  stotime: function(s) {
-    let t = '';
-    if(s > -1) {
-      // let hour = Math.floor(s / 3600);
-      let min = Math.floor(s / 60) % 60;
-      let sec = s % 60;
-      // if (hour < 10) {
-      //   t = '0' + hour + ":";
-      // } else {
-      //   t = hour + ":";
-      // }
-
-      if (min < 10) { t += "0"; }
-      t += min + ":";
-      if (sec < 10) { t += "0"; }
-      t += sec;
-    }
-    return t;
+    wx.setStorageSync('autoIndex', e.currentTarget.dataset.index)
   },
   onShareAppMessage: function () {
     let that = this
     return {
-      title: 'light轻音乐：' + that.data.audioList[that.data.audioIndex].title,
+      title: '我是杰伦fans：' + that.data.audioList[that.data.audioIndex].title,
       success: function(res) {
         wx.showToast({
           title: '分享成功',
           icon: 'success',
           duration: 2000
         })
+
       },
       fail: function(res) {
         wx.showToast({
