@@ -102,12 +102,18 @@ Page({
     backgroundAudioManager.epname = this.data.audioList[index].title
     backgroundAudioManager.singer = this.data.audioList[index].author
     backgroundAudioManager.coverImgUrl = this.data.audioList[index].pic
+    wx.showLoading({
+      title: '加载中',
+    })
     this.setData({
       pic: this.data.audioList[index].pic,
       title: this.data.audioList[index].title
     })
     // 设置了 src 之后会自动播放
     backgroundAudioManager.src = `http://ptgfot33a.bkt.clouddn.com/${this.data.audioList[index].songid}.mp3`
+    backgroundAudioManager.onCanplay(()=>{
+      wx.hideLoading()
+    })
     this.setData({
       duration: backgroundAudioManager.duration||0
     })
