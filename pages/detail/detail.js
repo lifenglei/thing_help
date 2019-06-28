@@ -117,10 +117,15 @@ Page({
     this.setData({
       duration: backgroundAudioManager.duration||0
     })
-    console.log(backgroundAudioManager.duration)
+    wx.clearStorageSync()
+    wx.setStorageSync('autoIndex', ~~index)
     backgroundAudioManager.onEnded(()=>{
-      console.log('结束')
-      this.setSong(index)
+      if (~~index == this.data.audioList.length-1){
+        index=-1
+      }
+      this.setSong(~~index+1)
+      wx.clearStorageSync()
+      wx.setStorageSync('autoIndex', ~~index+1)
     })
     // backgroundAudioManager.onPlay(()=>{
     //   console.log(backgroundAudioManager.duration)
