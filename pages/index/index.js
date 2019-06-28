@@ -34,8 +34,10 @@ Page({
   },
   del(){
     this.setData({
-      searchValue:''
+      searchValue:'',
+      page:1
     })
+
     this.setData({
       audioList: PageEvent.pagination(this.data.page, this.data.pageSize, audioList)
     })
