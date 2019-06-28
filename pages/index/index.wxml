@@ -1,12 +1,23 @@
 <!--index.wxml-->
-<view class="container">
+<view>
   <!--第一层层：背景图背景图，高斯模糊-->
+  <view class='page_row' bindtap="suo">  
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchcion" size='20' type='search'></icon>  
+          <input class=""  placeholder="请输入歌曲" value="{{searchValue}}" placeholder-class="place-holder" bindinput="bindKeyInput"/>  
+        </view>  
+      </view>  
+      <view class='sousuo' bindtap="search">搜索</view>  
+      <view class='sousuo' bindtap="del">重置</view>  
+    </view> 
   
   <!--第五层：列表页-->
   <scroll-view
     class="list"
     scroll-y style="display: {{listShow === true ? '' : 'none'}}"
     scroll-top="{{audioIndex * 68}}"
+    bindscrolltolower="lower"
     >
     <view wx:for="{{audioList}}" wx:key="{{index}}">
       <view

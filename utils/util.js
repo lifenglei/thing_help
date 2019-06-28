@@ -21,6 +21,10 @@ function getDateStr(date) {
     if (!date) return '';
     return date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
 }
+function pagination(pageNo, pageSize, array) {
+  var offset = (pageNo - 1) * pageSize;
+  return (offset + pageSize >= array.length) ? array.slice(offset, array.length) : array.slice(offset, offset + pageSize);
+}
 
 /**
  * 生成GUID序列号
@@ -54,6 +58,7 @@ function promiseHandle(func, options) {
 module.exports = {
     formatTime: formatTime,
     guid: guid,
+    pagination: pagination,
     promiseHandle: promiseHandle,
     getDateStr: getDateStr,
     formatNumber: formatNumber

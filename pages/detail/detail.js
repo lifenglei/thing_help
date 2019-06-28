@@ -1,8 +1,8 @@
 
-var app = getApp();
-var backgroundAudioManager = null
-var songid = null
-import { audioList } from '../../datas/song.js'
+var app = getApp(),
+backgroundAudioManager,
+songid,
+audioList;
 Page({
 
   /**
@@ -12,7 +12,6 @@ Page({
     pic:'',
     title:'',
     pauseStatus:false,
-    audioList: audioList,
     audioIndex: 0,
     currentPosition: 0,
     duration: 0,    
@@ -37,7 +36,7 @@ Page({
   },
   bindTapNext: function () {
     console.log('bindTapNext')
-    let length = this.data.audioList.length
+    let length = audioList.length
     let audioIndexPrev = this.data.audioIndex
     let audioIndexNow = audioIndexPrev
     if (audioIndexPrev === length - 1) {
@@ -55,7 +54,7 @@ Page({
   },
   bindTapPrev: function () {
     console.log('bindTapPrev')
-    let length = this.data.audioList.length
+    let length = audioList.length
     let audioIndexPrev = this.data.audioIndex
     let audioIndexNow = audioIndexPrev
     if (audioIndexPrev === 0) {
@@ -89,7 +88,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    audioList = app.globalData.audioList
+    console.log(audioList)
   },
   bindTapList(){
     wx.navigateTo({
@@ -98,19 +98,24 @@ Page({
   },
   setSong(index){
     backgroundAudioManager = wx.getBackgroundAudioManager()
-    backgroundAudioManager.title = this.data.audioList[index].title
-    backgroundAudioManager.epname = this.data.audioList[index].title
-    backgroundAudioManager.singer = this.data.audioList[index].author
-    backgroundAudioManager.coverImgUrl = this.data.audioList[index].pic
+    backgroundAudioManager.title = audioList[index].title
+    backgroundAudioManager.epname = audioList[index].title
+    backgroundAudioManager.singer = audioList[index].author
+    backgroundAudioManager.coverImgUrl = audioList[index].pic
     wx.showLoading({
       title: '加载中',
     })
+    if (this.data.audioIndex == wx.getStorageSync('autoIndex')){
+      wx.hideLoading()
+    }
     this.setData({
-      pic: this.data.audioList[index].pic,
-      title: this.data.audioList[index].title
+      pic: audioList[index].pic,
+      title: audioList[index].title
     })
+    console.log(index)
+    console.log(audioList[index].songid)
     // 设置了 src 之后会自动播放
-    backgroundAudioManager.src = `http://ptgfot33a.bkt.clouddn.com/${this.data.audioList[index].songid}.mp3`
+    backgroundAudioManager.src = `http://ptgfot33a.bkt.clouddn.com/${audioList[index].songid}.mp3`
     backgroundAudioManager.onCanplay(()=>{
       wx.hideLoading()
     })
@@ -120,7 +125,7 @@ Page({
     wx.clearStorageSync()
     wx.setStorageSync('autoIndex', ~~index)
     backgroundAudioManager.onEnded(()=>{
-      if (~~index == this.data.audioList.length-1){
+      if (~~index == audioList.length-1){
         index=-1
       }
       this.setSong(~~index+1)

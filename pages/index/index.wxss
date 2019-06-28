@@ -152,6 +152,7 @@
   top: 0;
   height: 100%;
   width: 100%;
+  padding-top:100rpx;
 }
 .list-one{
   height: 160rpx;
@@ -183,4 +184,54 @@
   border-radius: 60rpx;
   line-height: 60rpx;
   margin-right: 20rpx;
+}
+    .search{  
+      width: 80%;  
+    }  
+    .search_arr {  
+      border: 1px solid #d0d0d0;  
+      border-radius: 10rpx;  
+      margin-left: 20rpx;  
+    }  
+    .search_arr input{  
+      margin-left: 60rpx;  
+      height: 60rpx;  
+      border-radius: 5px;  
+    }  
+    .bc_text {  
+      line-height: 68rpx;  
+      height: 68rpx;  
+      margin-top: 34rpx;  
+    }  
+      
+    .sousuo {  
+      margin-left: 15rpx;  
+      width: 15%;  
+      line-height: 150%;  
+      text-align: center;  
+      border: 1px solid #d0d0d0;  
+      border-radius: 10rpx;  
+    }  
+    .page_row{  
+      display: flex;  
+      flex-direction: row;
+     padding:20rpx 0;
+      position: fixed;
+      z-index:99;
+      width:100%;
+      background: #fff;
+      margin-bottom:20rpx;
+
+    }  
+    .searchcion {  
+      margin: 10rpx 10rpx 10rpx 10rpx;  
+      position: absolute;  
+      left:25rpx;  
+      z-index: 2;  
+      width: 20px;  
+      height: 20px;  
+      text-align: center;  
+    }  
+    .place-holder {
+    font-size: 28rpx;
 }

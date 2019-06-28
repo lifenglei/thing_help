@@ -1,26 +1,51 @@
 //index.js
 //获取应用实例
 import {audioList} from '../../datas/song.js'
+var PageEvent =require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    audioList: audioList,
+    audioList: [],
     pauseStatus: true,
     listShow: true,
-    timer: ''
+    timer: '',
+    page:1,
+    pageSize:20,
+    searchValue:''
   },
   onLoad: function () {
-    console.log('onLoad')
+    console.log(PageEvent)
+    this.setData({
+      audioList: PageEvent.pagination(this.data.page, this.data.pageSize, audioList)
+    })
    
   },
-  onReady: function (e) {
-    console.log('onReady')
+  bindKeyInput(e){
+    console.log(e)
+    this.setData({
+      searchValue:e.detail.value
+    })
+  },
+  search(){
+    this.setData({
+      audioList:this.data.audioList.filter(item=>item.title==this.data.searchValue)
+    })
+    app.globalData.audioList = this.data.audioList
+  },
+  del(){
+    this.setData({
+      searchValue:''
+    })
+    this.setData({
+      audioList: PageEvent.pagination(this.data.page, this.data.pageSize, audioList)
+    })
 
   },
   onShow(){
     this.setData({
       audioIndex: wx.getStorageSync('autoIndex')||0
     })
+    app.globalData.audioList = this.data.audioList
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏
@@ -31,8 +56,19 @@ Page({
     // 生命周期函数--监听页面卸载
     console.log("test1 onUnload");
   },
-  bindSliderchange: function(e) {
-
+  lower: function() {
+    console.log('到底')
+    wx.showLoading({
+      title: '杰伦奔跑...',
+    })
+    console.log(this.data.page + 1)
+    this.setData({
+      page:this.data.page+1,
+      audioList: [...this.data.audioList, ...PageEvent.pagination(this.data.page, this.data.pageSize, audioList)]
+    })
+    app.globalData.audioList = this.data.audioList
+    console.log(this.data.audioList)
+    wx.hideLoading()
   },
   bindTapChoose: function(e) {
     console.log(e)
