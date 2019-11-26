@@ -1,0 +1,18 @@
+<!--pages/aboutme/aboutme.wxml-->
+<view class="about">
+    <view class="about-wei">    
+      <view  class="about-img"><image src="{{img}}"  class="in-img" background-size="cover"></image></view>
+      <view class="about-title">{{title}}</view>
+    </view>
+
+    <view class="about-intro"> 
+      <view>{{intro}}</view>
+    </view>
+
+    <view class="about-addr">
+      <view class="about-tab">{{connecttion}}</view>
+      <view>{{address}}</view>
+      <view>{{email}}</view>
+      <view>{{phone}}</view>
+    </view>
+</view>

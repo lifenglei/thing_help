@@ -1,148 +1,70 @@
 
-var app = getApp(),
-backgroundAudioManager,
-songid,
-audioList;
+var app = getApp()
+var api = require('../../requests/api.js')
+var utils = require('../../utils/util.js')
+var requests = require('../../requests/request.js')
+let currentId,newInfo
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pic:'',
-    title:'',
-    pauseStatus:false,
-    audioIndex: 0,
-    currentPosition: 0,
-    duration: 0,    
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    songid = options.songid
-    this.setData({
-      audioIndex:options.index
-    })
-   
+    console.log(options)
+    currentId = options.id
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setSong(this.data.audioIndex)
+    
   },
-  bindTapNext: function () {
-    console.log('bindTapNext')
-    let length = audioList.length
-    let audioIndexPrev = this.data.audioIndex
-    let audioIndexNow = audioIndexPrev
-    if (audioIndexPrev === length - 1) {
-      audioIndexNow = 0
-    } else {
-      audioIndexNow = ~~audioIndexPrev + 1
-    }
-    console.log(audioIndexNow)
-    this.setSong(audioIndexNow)
-    this.setData({
-      audioIndex: audioIndexNow
-    })
-    wx.clearStorageSync()
-    wx.setStorageSync('autoIndex', audioIndexNow)
-  },
-  bindTapPrev: function () {
-    console.log('bindTapPrev')
-    let length = audioList.length
-    let audioIndexPrev = this.data.audioIndex
-    let audioIndexNow = audioIndexPrev
-    if (audioIndexPrev === 0) {
-      audioIndexNow = length - 1
-    } else {
-      audioIndexNow = audioIndexPrev - 1
-    }
-    this.setSong(audioIndexNow)
-    this.setData({
-      audioIndex: audioIndexNow
-    })
-    console.log(audioIndexNow)
-    wx.clearStorageSync()
-    wx.setStorageSync('autoIndex', audioIndexNow)
-  },
-  bindTapPlay: function () {
-    console.log('bindTapPlay')
-    console.log(this.data.pauseStatus)
-    if (this.data.pauseStatus === true) {
-      backgroundAudioManager.play()
-      this.setData({ pauseStatus: false })
-    } else {
-      console.log(backgroundAudioManager)
-      backgroundAudioManager.pause()
-      wx.pauseBackgroundAudio()
-      this.setData({ pauseStatus: true })
-    }
-  },
+
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    audioList = app.globalData.audioList
-    console.log(audioList)
+    
   },
   bindTapList(){
     wx.navigateTo({
       url: '../index/index',
     })
   },
-  setSong(index){
-    backgroundAudioManager = wx.getBackgroundAudioManager()
-    backgroundAudioManager.title = audioList[index].title
-    backgroundAudioManager.epname = audioList[index].title
-    backgroundAudioManager.singer = audioList[index].author
-    backgroundAudioManager.coverImgUrl = audioList[index].pic
-    wx.showLoading({
-      title: '加载中',
-    })
-    if (this.data.audioIndex == wx.getStorageSync('autoIndex')){
-      wx.hideLoading()
+  logistics_Input(e){
+    newInfo = e.detail.value;
+  },
+  changeInfo(){
+    if(newInfo==''){
+      wx.showModal({
+        title: '提示',
+        content: '输入不能为空',
+        confirmText: '确定',
+        showCancel: false,
+        success: function () {
+
+        }
+      })
+      return
+    }else{
+      getOrderDetail.call(this)
     }
-    this.setData({
-      pic: audioList[index].pic,
-      title: audioList[index].title
-    })
-    console.log(index)
-    console.log(audioList[index].songid)
-    // 设置了 src 之后会自动播放
-    backgroundAudioManager.src = `http://ptgfot33a.bkt.clouddn.com/${audioList[index].songid}.mp3`
-    backgroundAudioManager.onCanplay(()=>{
-      wx.hideLoading()
-    })
-    this.setData({
-      duration: backgroundAudioManager.duration||0
-    })
-    wx.clearStorageSync()
-    wx.setStorageSync('autoIndex', ~~index)
-    backgroundAudioManager.onEnded(()=>{
-      if (~~index == audioList.length-1){
-        index=-1
-      }
-      this.setSong(~~index+1)
-      wx.clearStorageSync()
-      wx.setStorageSync('autoIndex', ~~index+1)
-    })
-    // backgroundAudioManager.onPlay(()=>{
-    //   console.log(backgroundAudioManager.duration)
-    // })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log('hide')
-    this.bindTapPlay()
+    
   },
 
   /**
@@ -173,3 +95,30 @@ Page({
     
   }
 })
+/**
+ * 
+ * 获取物流列表
+ */
+function getOrderDetail(){
+  wx.showLoading('正在查询')
+  var url = api.API_GET_Detail;
+  var params = {
+    logistics_id:currentId,
+    logistics_no:newInfo
+  }
+  requests.getRequest(url,params).then(res=>{
+    console.log(res)
+    console.log(res.data.data)
+    if (res.data.code == 1){
+      wx.hideLoading()
+      console.log(res.data)
+      this.setData({
+        list: res.data.data.data
+      })
+    }else{
+      wx.hideLoading()
+    }
+  }).catch(error => {
+    console.log(error)
+  })
+}

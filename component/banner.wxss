@@ -1,0 +1,45 @@
+.com_banner {
+    position: relative;
+    height: 380rpx
+}
+
+.com_banner .button {
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%
+}
+
+.com_banner .com_swiper_banner {
+    height: 100%;
+    position: relative
+}
+
+.com_banner .com_swiper_banner image {
+    width: 100%;
+    height: 100%
+}
+
+.com_banner .com_swiper_banner .wx-swiper-dot {
+    width: 20rpx;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    height: 2rpx;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between
+}
+
+.com_banner .com_swiper_banner .wx-swiper-dot::before {
+    content: '';
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8rpx
+}
+
+.com_banner .com_swiper_banner .wx-swiper-dot-active::before {
+    background: #fff
+}

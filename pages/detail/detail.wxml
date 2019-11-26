@@ -1,45 +1,16 @@
-<view class="bg">
-    <image class="poster" mode="scaleToFill" src="{{audioList[audioIndex].poster}}"></image>
-  </view>
-  <!--第二层层：灰色蒙层-->
-  <view class="bg-gray">
-  </view>
-  <!--第三层：player层-->
-  <view style="display: {{listShow === true ? 'none' : ''}}">
-    <!--旋转图-->
-    <view class="rotate-disk-container">
-      <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
-        <image class="poster" src="{{pic}}"></image>
-      </view>
-    </view>
-    <!--操作-->
-    <view class="title-container">
-      <view class="title-left"></view>
-      <view class="text">
-        <view><text class="name">{{title}}</text></view>
-        <!--<view><text class="author">-- {{audioList[audioIndex].author}} --</text></view>-->
-      </view>
-      <image src="../../images/list.png" class="icon-list" bindtap="bindTapList"></image>
-    </view>
-    <!-- <view class="slider-container">
-      <text class="slider-time">{{currentPosition === 0 ? '' : currentPosition}}</text>
-      <slider
-          value="{{sliderValue}}"
-          bindchange="bindSliderchange"
-          activeColor="#13beec"
-          style="width: 62%;margin: 0;"
-          block-size="12"
-          block-color="#13beec"
-        />
-      <text class="slider-time">{{duration === 0 ? '' : duration}}</text>
-    </view> -->
-    <view class="operation-container">
-      <image src="../../images/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
-      <image
-        src="{{pauseStatus === false ? '../../images/pause.png' : '../../images/play.png'}}"
-        class="icon-play" bindtap="bindTapPlay"
-        >
-        </image>
-      <image src="../../images/next.png" class="icon-next" bindtap="bindTapNext"></image>
-    </view>
-  </view>
+ <view class="weui-cells weui-cells_after-title write-info">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写您的订单编号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{logistics_num}}"/>
+                </view>
+            </view>
+        </view>
+        <view class="btn">
+          <button bindtap='changeInfo'disabled="{{status}}">查询</button>
+          <scroll-view scroll-y style="height: 400px;" >
+            <view wx:for="{{list}}">
+            <view>【{{item.time}}】</view>
+              <view>{{item.desc}}</view>
+            </view>
+          </scroll-view>
+        </view>

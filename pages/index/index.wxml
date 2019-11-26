@@ -1,43 +1,21 @@
-<!--index.wxml-->
-<view>
-  <!--第一层层：背景图背景图，高斯模糊-->
-  <view class='page_row' bindtap="suo">  
-      <view class="search">  
-        <view class="df search_arr">  
-          <icon class="searchcion" size='20' type='search'></icon>  
-          <input class=""  placeholder="请输入歌曲" value="{{searchValue}}" placeholder-class="place-holder" bindinput="bindKeyInput"/>  
-        </view>  
-      </view>  
-      <view class='sousuo' bindtap="search">搜索</view>  
-      <view class='sousuo' bindtap="del">重置</view>  
-    </view> 
-  
-  <!--第五层：列表页-->
-  <scroll-view
-    class="list"
-    scroll-y style="display: {{listShow === true ? '' : 'none'}}"
-    scroll-top="{{audioIndex * 68}}"
-    bindscrolltolower="lower"
-    >
-    <view wx:for="{{audioList}}" wx:key="{{index}}">
-      <view
-        wx:key="*this"
-        class="list-one {{index === audioIndex ? 'list-one-choose' : ''}}"
-        hover-class="list-one-choose"
-        data-obj="{{item}}"
-        data-index = "{{index}}"
-        bindtap="bindTapChoose"
-        >
-        <!-- <view class="name">
-          <text class="list-index">{{index}}</text>
-        </view> -->
-        <image class="list-one-poster" src="{{item.pic}}"></image>
-        <view class="list-one-right">
-          <view class="name">{{item.title}}</view>
-          <view class="author">歌手：{{item.author}}</view>
-        </view>
-      </view>
+    <view class="body_m">
+    <view class="height">
+    <view class="search" bindtap="toSearch"><i class="iconfont icon-search"/> 每日福利</view>
+    <view class="com_banner">
+      <swiper circular="circular" class="com_swiper_banner" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="100">
+        <block  wx:for="{{bannerList}}" wx:for-index="index" wx:key="index">
+          <swiper-item class="swiperItem">
+            <form  data-url="{{item.con}}"  data-index="{{index}}" report-submit="true">
+              <view form-type="submit" class="button">
+                <image src="{{item.imageUrl}}" class="slide-image"/>
+              </view>
+            </form>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
-  </scroll-view>
-  <!-- <audio id="audio" src="{{'http://ptgfot33a.bkt.clouddn.com/'+audioList[audioIndex].songid+'.mp3'}}" style="display: none" loop></audio> -->
-</view>
+    <view class="nav">
+        <view class="li" bindtap="goTodetial"  wx:for="{{typeList}}" wx:key="logisticsId" data-menuid="{{item.logisticsId}}"><text>{{item.logisticsName}}</text></view>
+    </view>
+  </view>
+  </view>

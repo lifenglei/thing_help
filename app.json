@@ -1,16 +1,38 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/about/about"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#E14848",
-    "navigationBarTitleText": "事项助手",
-    "navigationBarTextStyle":"white"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#07aefc",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
   },
   "requiredBackgroundModes": [
     "audio",
     "backgroundAudioManager"
-  ]
+  ],
+  "tabBar": {
+    "borderStyle": "black",
+    "color": "#000",
+    "backgroundColor": "#fff",
+    "selectedColor": "#0123",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/selected-home.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于我",
+        "iconPath": "./images/man.png",
+        "selectedIconPath": "./images/selected-man.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }
