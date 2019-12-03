@@ -111,9 +111,8 @@ function getOrderDetail(){
     console.log(res.data.data)
     if (res.data.code == 1){
       wx.hideLoading()
-      console.log(res.data)
       this.setData({
-        list: res.data.data.data.map((item,index)=>{
+        list: res.data.data.data.reverse().map((item,index)=>{
           item.index = index
           item.date = item.time.substring(11,16)
           item.gTime = getDate(item.time)
