@@ -17,5 +17,7 @@
     <view class="nav">
         <view class="li" bindtap="goTodetial"  wx:for="{{typeList}}" wx:key="logisticsId" data-menuid="{{item.logisticsId}}"><text>{{item.logisticsName}}</text></view>
     </view>
+    <view class="title">今日笑话</view>
+    <view class="content">{{joke.content}}</view>
   </view>
   </view>

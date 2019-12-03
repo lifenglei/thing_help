@@ -8,11 +8,13 @@ Page({
     typeList:[],
     bannerList:[
     ],
+    joke:{},
     indicatorDots: true
   },
   onLoad: function () {
     getTopBanner.call(this);
     getWuLiuList.call(this);
+    getJoke.call(this);
     
   },
   onShow(){
@@ -80,6 +82,23 @@ function getTopBanner(){
           indicatorDots:false
         })
       }
+    }
+  })
+}
+/**
+ * 获取每日笑话
+ */
+function getJoke(){
+  var _this = this;
+  var url = api.API_GET_JOKE;
+  var data = {
+    
+  }
+  requests.getRequest(url,data).then(res=>{
+    if(res.data.code==1){
+      _this.setData({
+        joke:res.data.data[0]
+      })
     }
   })
 }

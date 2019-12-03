@@ -1,16 +1,61 @@
  <view class="weui-cells weui-cells_after-title write-info">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请填写您的订单编号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{logistics_num}}"/>
+                    <input class="weui-input order" placeholder="请填写您的订单编号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{logistics_num}}"/><i class="iconfont icon-search" bindtap='changeInfo'disabled="{{status}}"/>
                 </view>
             </view>
         </view>
-        <view class="btn">
+        <!-- <view class="btn">
           <button bindtap='changeInfo'disabled="{{status}}">查询</button>
-          <scroll-view scroll-y style="height: 400px;" >
-            <view wx:for="{{list}}">
-            <view>【{{item.time}}】</view>
-              <view>{{item.desc}}</view>
-            </view>
-          </scroll-view>
+        </view> -->
+<view class='g_con' wx:if="{{list.length}}">
+
+  <!-- 物流时间轴 -->
+  <view class='expressRecord'>
+
+
+    <!-- 顶部收货地址 -->
+    <!-- <view class='expressRecord-getAddress'>
+      <view class='expressRecord-top'>
+        <view class='getAddress-icon'>
+          收
         </view>
+        <view class='getAddress-text'>[收货地址] 广东省深圳市南山区 南山街道 亿利达大厦</view>
+      </view>
+    </view> -->
+
+    <!-- 顶部收货地址半个时间轴线 -->
+    <!-- <view class='noReach-online-top-close'></view> -->
+
+
+    <!-- 单个物流记录点时间轴：当前正在进行的物流状态 -->
+    <view class='expressRecord-single-close' wx:for="{{list}}">
+
+      <!-- 左边子容器 -->
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <!-- 正在进行的时间轴上半个时间线 -->
+        <view class='online-top-closing'></view>
+        <!-- 正在进行的时间轴点 -->
+        <view class="{{item.index==0?'dot-closing':'dot-close'}}"></view>
+        <!-- 正在进行的时间轴下半个时间线 -->
+        <view class='online-bottom'></view>
+      </view>
+
+      <!-- 右边子容器 -->
+      <view class='expressRecord-text'>
+        <view class='expressRecord-statusing'>{{item.desc}}</view>
+        <!-- <view class='expressRecord-status-addressing'>武汉转运中心公司 已发出，下一站 深圳转运中心</view> -->
+      </view>
+
+      <!-- 相对父级容器绝对定位的日期 -->
+      <view class='expressRecord-dating'>
+        <view class='expressRecord-date-text'>
+          {{item.gTime}}
+        </view>
+        <view class='expressRecord-date-time'>
+          {{item.date}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

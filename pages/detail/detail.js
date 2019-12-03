@@ -113,7 +113,12 @@ function getOrderDetail(){
       wx.hideLoading()
       console.log(res.data)
       this.setData({
-        list: res.data.data.data
+        list: res.data.data.data.map((item,index)=>{
+          item.index = index
+          item.date = item.time.substring(11,16)
+          item.gTime = getDate(item.time)
+          return item 
+        })
       })
     }else{
       wx.hideLoading()
@@ -121,4 +126,53 @@ function getOrderDetail(){
   }).catch(error => {
     console.log(error)
   })
+}
+function getDate(dateTimeStamp){
+  var minute = 1000 * 60;
+  var hour = minute * 60;
+  var day = hour * 24;
+  var month = day * 30;
+  if(dateTimeStamp==undefined){
+    
+    return false;
+  }else{
+    dateTimeStamp = dateTimeStamp.replace(/\-/g, "/");
+    
+    var sTime = new Date(dateTimeStamp).getTime();//把时间pretime的值转为时间戳
+    
+    var now = new Date().getTime();//获取当前时间的时间戳
+    
+    var diffValue = now - sTime;
+    
+    if(diffValue < 0){
+      console.log("结束日期不能小于开始日期！");
+    }
+    
+    var monthC =diffValue/month;
+    var weekC =diffValue/(7*day);
+    var dayC =diffValue/day;
+    var hourC =diffValue/hour;
+    var minC =diffValue/minute;
+    var result ;
+    
+    if(monthC>=1){
+      result = parseInt(monthC) + "个月前"
+     
+    }
+    else if(weekC>=1){
+      result=parseInt(weekC) + "周前"
+    }
+    else if(dayC>=1){
+      result=parseInt(dayC) +"天前"
+    }
+    else if(hourC>=1){
+      result=parseInt(hourC) +"个小时前"
+    }
+    else if(minC>=1){
+      result=parseInt(minC) +"分钟前"
+    }else{
+      result='刚刚'
+    }
+    return result
+  }
 }

@@ -7,6 +7,18 @@
 .clear {
   clear: both;
 }
+.title{
+  padding-left:20rpx;
+  padding-top:20rpx;
+  font-size:30rpx;
+  color:#777;
+}
+.content{
+  padding:20rpx;
+  font-size:24rpx;
+  color:#333;
+  font-family: PingFangSC-Regular;
+}
 
 .search {
   position: absolute;
