@@ -1,13 +1,6 @@
- <view class="weui-cells weui-cells_after-title write-info">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__bd">
-                    <input class="weui-input order" placeholder="请填写您的订单编号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{logistics_num}}"/><i class="iconfont icon-search" bindtap='changeInfo'disabled="{{status}}"/>
-                </view>
-            </view>
-        </view>
-        <!-- <view class="btn">
-          <button bindtap='changeInfo'disabled="{{status}}">查询</button>
-        </view> -->
+ <view>
+ <view class="search" bindtap="toSearch"><input placeholder="请扫描您的订单编号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{result}}"/><image class="icon-saomiao" src="../../images/saomiao.png" bindtap="saomiao"/></view>
+   
 <view class='g_con' wx:if="{{list.length}}">
 
   <!-- 物流时间轴 -->
@@ -59,3 +52,6 @@
     </view>
   </view>
 </view>
+<view wx:if="{{showMsg}}" class="nomessage">暂无物流信息...请耐心等待</view>
+</view>
+

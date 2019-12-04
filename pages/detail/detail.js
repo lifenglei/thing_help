@@ -10,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[]
+    list:[],
+    result:'',
+    showMsg:false
   },
 
   /**
@@ -40,24 +42,18 @@ Page({
       url: '../index/index',
     })
   },
-  logistics_Input(e){
-    newInfo = e.detail.value;
-  },
-  changeInfo(){
-    if(newInfo==''){
-      wx.showModal({
-        title: '提示',
-        content: '输入不能为空',
-        confirmText: '确定',
-        showCancel: false,
-        success: function () {
-
-        }
-      })
-      return
-    }else{
-      getOrderDetail.call(this)
-    }
+  saomiao(){
+    var _this = this;
+    wx.scanCode({
+      success: (res) => {
+        var result = res.result;
+        _this.setData({
+          result: result
+        })
+        newInfo=result
+        getOrderDetail.call(_this)
+      }
+    })
   },
 
   /**
@@ -100,7 +96,11 @@ Page({
  * 获取物流列表
  */
 function getOrderDetail(){
-  wx.showLoading('正在查询')
+  wx.showLoading({
+    title:'正在查询'
+  })
+  console.log('查询')
+  console.log(newInfo,currentId)
   var url = api.API_GET_Detail;
   var params = {
     logistics_id:currentId,
@@ -120,9 +120,13 @@ function getOrderDetail(){
         })
       })
     }else{
+      this.setData({
+        showMsg:true
+      })
       wx.hideLoading()
     }
   }).catch(error => {
+    wx.hideLoading()
     console.log(error)
   })
 }

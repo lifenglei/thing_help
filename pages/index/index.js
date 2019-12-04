@@ -20,6 +20,24 @@ Page({
   onShow(){
    
   },
+  change(){
+    getJoke.call(this);
+  },
+  previewImg:function(e){
+    console.log(e.currentTarget.dataset.index);
+    var index = e.currentTarget.dataset.index;
+    var imgArr = this.data.bannerList.map(item=>{
+      return item.imageUrl
+    })
+    console.log(imgArr);
+    wx.previewImage({
+      current: imgArr[index],     //当前图片地址
+      urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   goTodetial(e){
     console.log(e)
     var logisticsId = e.currentTarget.dataset.menuid
@@ -50,7 +68,7 @@ function getWuLiuList(){
     console.log(res.data.data)
     if (res.data.code == 1){
       this.setData({
-        typeList: res.data.data.slice(0,12)
+        typeList: res.data.data.slice(0,16)
       }) 
     }
   }).catch(error => {

@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="wrap">
+  <!-- <web-view src="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes">我的</web-view> -->
+  <scroll-view  scroll-top="{{scrollTop}}" scroll-y="true"style="height:{{scrollHeight}};">
+  <!--九宫格展示数据-->
+  <view class="page">
+    <view class="page__bd">
+        <view class="list-wrap">
+            <block wx:for="{{chatRoomList}}" wx:for-item="itemName" wx:key="*this">
+              <view class="link-home" hover-class="none" data-roomid="{{itemName.details}}" bindtap='goToChatRoom'> 
+                <view class="weui-cell chat-wrap">
+                  <view class="weui-cell__hd chat-left">
+                      <image src="{{itemName.picUrl}}" class="chat-img"/>
+                  </view>
+                  <view class="weui-cell__bd">
+                        <view class="info flex-b">
+                          <view>
+                      <text class="shenfen {{itemName.is_admin==1?'blue':'pink'}}">
+                        <text wx:if="{{itemName.is_admin==1}}">管理</text>
+                        <text wx:if="{{itemName.is_admin==2}}">房主</text>
+                      </text>
+                      <text class="c33">{{itemName.title}}</text></view>
+                        </view>
+                        <!-- <view>
+                            <text class="c33 h33">{{itemName.details}}</text>
+                        </view> -->
+                      <view class="flex-b">
+                         <text class="c99">{{itemName.room_desc}}</text>
+                         <text class="c99">{{itemName.date}}</text>
+                      </view>
+                     
+                  </view>
+                </view>
+              </view>
+            </block>
+        </view>
+    </view>
+</view>
+  </scroll-view>
+</view>

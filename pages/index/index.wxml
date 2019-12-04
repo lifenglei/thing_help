@@ -1,13 +1,13 @@
     <view class="body_m">
     <view class="height">
-    <view class="search" bindtap="toSearch"><i class="iconfont icon-search"/> 每日福利</view>
+    <!-- <view class="search" bindtap="toSearch"><i class="iconfont icon-search"/> 每日福利</view> -->
     <view class="com_banner">
       <swiper circular="circular" class="com_swiper_banner" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="100">
         <block  wx:for="{{bannerList}}" wx:for-index="index" wx:key="index">
           <swiper-item class="swiperItem">
-            <form  data-url="{{item.con}}"  data-index="{{index}}" report-submit="true">
+            <form  data-url="{{item.con}}"  report-submit="true">
               <view form-type="submit" class="button">
-                <image src="{{item.imageUrl}}" class="slide-image"/>
+                <image src="{{item.imageUrl}}"  data-index="{{index}}" class="slide-image" bindtap="previewImg" />
               </view>
             </form>
           </swiper-item>
@@ -17,7 +17,10 @@
     <view class="nav">
         <view class="li" bindtap="goTodetial"  wx:for="{{typeList}}" wx:key="logisticsId" data-menuid="{{item.logisticsId}}"><text>{{item.logisticsName}}</text></view>
     </view>
-    <view class="title">今日笑话</view>
+    <view class="title">
+      <view>今日笑话</view>
+      <view bindtap="change">换一换<image src="../../images/change.png" class="icon-change"/></view>
+    </view>
     <view class="content">{{joke.content}}</view>
   </view>
   </view>

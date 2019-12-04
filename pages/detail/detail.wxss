@@ -2,18 +2,35 @@
 @import "../../component/icon.wxss";
 page{
   background:#f4f4f4;
-  padding-top:60rpx;
   padding-left:30rpx;
 }
-.order{
-  position:relative;
+
+.search {
+  position: absolute;
+  top: 14rpx;
+  left: 30rpx;
+  right: 30rpx;
+  height: 60rpx;
+  background: #fff;
+  opacity: 0.8;
+  font-size: 26rpx;
+  color: #777;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  padding: 0 25rpx;
+  z-index: 99;
 }
-.icon-search {
+.icon-saomiao {
   position: absolute;
   font-size: 26rpx;
   right:20rpx;
-  top:30rpx;
   z-index:99;
+  top:1rpx;
+  width:36rpx;
+  height:36rpx;
+  display:inline-block;
+  padding:10rpx;
+
 }
 .write-info{
   width:92%;
@@ -45,6 +62,16 @@ page{
 .g_con {
   width: 100vw;
   overflow-x: hidden;
+}
+.nomessage{
+  width:375rpx;
+  position: relative;
+  top:300rpx;
+  left:-20rpx;
+  text-align:center;
+  margin:0 auto;
+  color: #444;
+  font-size:26rpx;
 }
 
 .topExpress {

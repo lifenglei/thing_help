@@ -7,15 +7,26 @@
 .clear {
   clear: both;
 }
+.icon-change{
+  font-size: 26rpx;
+  width:36rpx;
+  height:36rpx;
+  display:inline-block;
+  padding:10rpx;
+  vertical-align: middle;
+}
 .title{
+  display:flex;
+  justify-content: space-between;
   padding-left:20rpx;
+  padding-right:20rpx;
   padding-top:20rpx;
   font-size:30rpx;
   color:#777;
 }
 .content{
   padding:20rpx;
-  font-size:24rpx;
+  font-size:26rpx;
   color:#333;
   font-family: PingFangSC-Regular;
 }

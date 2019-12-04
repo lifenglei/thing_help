@@ -1,0 +1,7 @@
+/* pages/appeal/appeal.wxss */
+.text{
+    padding:20rpx;
+    font-size:26rpx;
+    color:#333;
+    font-family: PingFangSC-Regular;
+}

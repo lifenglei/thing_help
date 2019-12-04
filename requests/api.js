@@ -8,5 +8,6 @@ module.exports={
   API_GET_DisCern: API_BASE + '/api/logistics/discern',//根据快递单号识别出所属快递公司编号
   API_GET_Detail:API_BASE+'/api/logistics/details/search',//获取物流信息
   API_GET_FULI:API_BASE+'/api/image/girl/list/random',//每日福利
-  API_GET_JOKE:API_BASE+'/api/jokes/list/random'//每日福利
+  API_GET_JOKE:API_BASE+'/api/jokes/list/random',//笑话
+  API_GET_LISHI:API_BASE+'/api/history/today'//历史
 }

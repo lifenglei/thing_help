@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/detail/detail",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/lishi/lishi",
+    "pages/appeal/appeal"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,11 +29,18 @@
         "selectedIconPath": "./images/selected-home.png"
       },
       {
+        "pagePath": "pages/lishi/lishi",
+        "text": "历史",
+        "iconPath": "./images/album-ajtd.png",
+        "selectedIconPath": "./images/album-xxy.png"
+      },
+      {
         "pagePath": "pages/about/about",
         "text": "关于我",
         "iconPath": "./images/man.png",
         "selectedIconPath": "./images/selected-man.png"
       }
+     
     ]
   },
   "sitemapLocation": "sitemap.json"

@@ -1,6 +1,11 @@
 .about-wei {
     text-align: center;
 }
+.about{
+    font-size:26rpx;
+    color:#333;
+  font-family: PingFangSC-Regular;
+}
 
 .about-img {
     display: block;
@@ -8,8 +13,10 @@
 }
 
 .in-img {
-    width: 124px;
-    height: 110px
+    width: 108rpx;
+    height: 108rpx;
+    border-radius:50%;
+    box-shadow: 0 0 0.2rpx 0 rgba(0, 0, 0, 0.07);
 }
 
 .about-title {
