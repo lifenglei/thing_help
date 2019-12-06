@@ -30,7 +30,7 @@
       },
       {
         "pagePath": "pages/lishi/lishi",
-        "text": "历史",
+        "text": "今日",
         "iconPath": "./images/album-ajtd.png",
         "selectedIconPath": "./images/album-xxy.png"
       },
