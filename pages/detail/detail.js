@@ -83,6 +83,12 @@ Page({
   onReachBottom: function () {
     
   },
+  logistics_Input(e){
+    newInfo = e.detail.value
+  },
+  sousuo(){
+    getOrderDetail.call(this)
+  },
 
   /**
    * 用户点击右上角分享

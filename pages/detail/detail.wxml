@@ -1,5 +1,5 @@
  <view>
- <view class="search" bindtap="toSearch"><input placeholder="请扫描您的订单编号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{result}}"/><image class="icon-saomiao" src="../../images/saomiao.png" bindtap="saomiao"/></view>
+ <view class="search" bindtap="toSearch"><input placeholder="请扫描您的订单编号或者输入订单号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{result}}"/><image class="icon-saomiao" src="../../images/saomiao.png" bindtap="saomiao"/><image class="icon-sousuo" src="../../images/sousuo.png" bindtap="sousuo"/></view>
    
 <view class='g_con' wx:if="{{list.length}}">
 
@@ -52,6 +52,9 @@
     </view>
   </view>
 </view>
-<view wx:if="{{showMsg}}" class="nomessage">暂无物流信息...请耐心等待</view>
+<view wx:if="{{showMsg}}" class="nomessage">
+  <view class="no-text">暂无物流信息...请耐心等待</view>
+  <image class="no" src="../../images/nofond.png" />
+</view>
 </view>
 

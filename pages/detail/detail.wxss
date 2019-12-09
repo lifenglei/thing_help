@@ -4,7 +4,14 @@ page{
   background:#f4f4f4;
   padding-left:30rpx;
 }
-
+.no{
+  width:100rpx;
+  height:100rpx;
+  margin-top:10rpx;
+}
+.no-text{
+  color:#777;
+}
 .search {
   position: absolute;
   top: 14rpx;
@@ -26,6 +33,20 @@ page{
   right:20rpx;
   z-index:99;
   top:1rpx;
+  right:60rpx;
+  width:36rpx;
+  height:36rpx;
+  display:inline-block;
+  padding:10rpx;
+
+}
+.icon-sousuo {
+  position: absolute;
+  font-size: 26rpx;
+  right:20rpx;
+  z-index:99;
+  top:1rpx;
+  right:2rpx;
   width:36rpx;
   height:36rpx;
   display:inline-block;

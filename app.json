@@ -29,16 +29,10 @@
         "selectedIconPath": "./images/selected-home.png"
       },
       {
-        "pagePath": "pages/lishi/lishi",
-        "text": "今日",
-        "iconPath": "./images/album-ajtd.png",
-        "selectedIconPath": "./images/album-xxy.png"
-      },
-      {
         "pagePath": "pages/about/about",
         "text": "关于我",
-        "iconPath": "./images/man.png",
-        "selectedIconPath": "./images/selected-man.png"
+        "iconPath": "./images/album-ajtd.png",
+        "selectedIconPath": "./images/album-xxy.png"
       }
      
     ]
