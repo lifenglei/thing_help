@@ -3,7 +3,7 @@
 }
 .about{
     font-size:26rpx;
-    color:#333;
+    color:#fff;
   font-family: PingFangSC-Regular;
 }
 
@@ -40,4 +40,8 @@
 
 .about-tab {
     margin-top: 20px
+}
+page{
+    background:#07aefc;
+    color:#fff;
 }

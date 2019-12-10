@@ -29,8 +29,14 @@
         "selectedIconPath": "./images/selected-home.png"
       },
       {
+        "pagePath": "pages/appeal/appeal",
+        "text": "休闲一刻",
+        "iconPath": "./images/basicprofile.jpeg",
+        "selectedIconPath": "./images/album-lt.png"
+      },
+      {
         "pagePath": "pages/about/about",
-        "text": "关于我",
+        "text": "关于作者",
         "iconPath": "./images/album-ajtd.png",
         "selectedIconPath": "./images/album-xxy.png"
       }

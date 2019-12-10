@@ -1,109 +1,145 @@
-// pages/chatroom/chatroom.js
-//引入页面依赖的js
-var api = require('../../requests/api.js');
-var requests = require('../../requests/request.js');
-//获取app实例以及定义所需数据
-var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    chatRoomList:[],
-    scrollTop: 0,
-    srollHeight: 0
+    url: "",
+    hidden: false,
+    toastHidden: true,
+    modalHidden: true,
+    toastText: "数据异常",
+    loadingText: "加载中..."
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    var _this= this;
-    getLIst.call(_this)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          scrollHeight: res.windowHeight
-        });
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
-  goToChatRoom:function(e){
-    var roomId = e.currentTarget.dataset.roomid;
-    wx.navigateTo({
-      url: `../appeal/appeal?detail=${roomId}`
-    })
-  }
-})
-/**
- * 获取每日笑话
- */
-function getLIst(){
-    var self = this;
-    var url = api.API_GET_LISHI;
-    var data = {
-        type:1
+    that = this;
+    if (options == null || options.url == null) {
+      this.setData({
+        hidden: true,
+        toastHidden: false
+      });
+      return;
     }
-    requests.getRequest(url,data).then(res=>{
-        if(res.data.code==1){
-            self.setData({
-                chatRoomList:[...res.data.data].map(item=>{
-                    item.date = `${item.year}年${item.month}月${item.day}日`
-                    return item
-                }).filter(i=>{
-                    if(i.picUrl!='')
-                    return i
-                })
-            })
-        }
+
+    this.setData({
+      hidden: true,
+      toastHidden: true,
+      url: options.url
     })
+  },
+  //Toast信息改变
+  onToastChanged: function (event) {
+    this.setData({
+      toastHidden: true
+    });
+  },
+  // 长按
+  onlongclick: function () {
+    this.setData({
+      modalHidden: false
+    });
+  },
+  // 保存
+  onSaveClick: function (event) {
+    var mUrl = "";
+    if (event.currentTarget.dataset.url != null)
+      mUrl = event.currentTarget.dataset.url;
+    console.log("download：" + mUrl);
+    saveImage(mUrl);
+  },
+  // 取消
+  onCancelClick: function (event) {
+    this.setData({
+      modalHidden: true
+    });
+  },
+});
+
+var that;
+/**
+ * 保存图片
+ */
+function saveImage(mUrl) {
+  console.log(mUrl)
+  that.setData({
+    hidden: false,
+    toastHidden: true,
+    modalHidden: true,
+    loadingText: "保存中..."
+  });
+  
+  //判断用户是否授权"保存到相册"
+  wx.getSetting({
+    success(res) {
+      console.log(res.authSetting)
+      //没有权限，发起授权
+      if (!res.authSetting['scope.writePhotosAlbum']) {
+        wx.showModal({
+          title: '检测到您没有打开保存到相册的权限，是否前往设置打开？',
+          success: (res) => {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              onOpenSetting(mUrl) // 打开设置页面          
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+              that.setData({
+                hidden:true
+              })
+            }
+          }
+        })
+      } else { //用户已授权，保存到相册
+        savePhoto(mUrl);
+      }
+    }
+  })
+}
+function onOpenSetting(mUrl){
+  wx.openSetting({
+    success:(res) => {
+      console.log(res.authSetting)
+      if (!res.authSetting['scope.writePhotosAlbum']) {
+        wx.showToast({
+          title: '您未授权',
+          icon: 'none',
+          duration: 1500
+        })
+        that.setData({
+          hidden:true
+        })
+      } else {// 接受授权
+        savePhoto(mUrl) // 接受授权后保存图片
+      }
+
+    }
+  })
+}
+function savePhoto(mUrl){
+  wx.downloadFile({
+    url: mUrl,
+    type: 'image',
+    success: function (res) {
+      var tempFilePath = res.tempFilePath;
+      wx.saveImageToPhotosAlbum({
+        filePath: tempFilePath,
+        success: function (res) {
+          that.setData({
+            hidden: true,
+            toastHidden: false,
+            toastText: "恭喜你,保存成功"
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      });
+    },
+    fail: function (res) {
+      that.setData({
+        hidden: true,
+        toastHidden: false,
+        toastText: "保存失败，请稍后再试"
+      });
+    },
+    complete: function (res) {
+      console.log("download complete");
+    }
+  })
 }

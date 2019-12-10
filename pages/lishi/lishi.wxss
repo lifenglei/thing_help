@@ -1,56 +1,9 @@
-/* pages/chatroom/chatroom.wxss */
-.chatroom-status text{
-    font-size: 13px;
-    color: #888888;
-  }
-  .flex-b{
-    display:flex;
-    justify-content: space-between;
-    margin-top:12rpx;
-  }
-  .chat-wrap{
-    font-size:24rpx;
-    padding:8px 15px!important;
-  }
-  .chat-img{
-    width: 60px; 
-    height: 60px; 
-    display: block;
-    border-radius:8rpx;
-  }
-  .chat-left{
-    position: relative;
-    margin-right: 10px;
-  }
-  .shenfen{
-    color:#fff;
-    font-size:20rpx;
-    width:56rpx;
-    text-align:center;
-    display:inline-block;
-    border-radius:4rpx;
-    margin-right:10rpx;
-  }
-  .blue{
-    background:#2080FC ;
-  }
-  .pink{
-    background:#D727B7;
-  }
-  .link-home{
-    border-bottom:1px solid #f3f3f3;
-  }
-  .c33{
-    color:#333;
-  }
-  .c99{
-    color:#999;
-  }
-  .h33{
-    font-size:20px;
-  float:right;
-  position:relative;
-  top:-50rpx;
-  left:-40rpx;
-  }
-  
+/*image.wxss*/
+.bigImage{
+  width: 95%;
+  height: 1000rpx;
+  margin: auto;
+  overflow: auto;   
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;  
+}

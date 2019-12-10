@@ -7,12 +7,10 @@
 
     <view class="about-intro"> 
       <view>{{intro}}</view>
+      <view class="about-addr">
+        <view>{{email}}</view>
+        <view>{{phone}}</view>
+      </view>
     </view>
 
-    <view class="about-addr">
-      <view class="about-tab">{{connecttion}}</view>
-      <view>{{address}}</view>
-      <view>{{email}}</view>
-      <view>{{phone}}</view>
-    </view>
 </view>
