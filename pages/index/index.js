@@ -23,6 +23,12 @@ Page({
   change(){
     getJoke.call(this);
   },
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
   previewImg:function(e){
     console.log(e.currentTarget.dataset.index);
     var index = e.currentTarget.dataset.index;
