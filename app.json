@@ -3,8 +3,6 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/about/about",
-    "pages/lishi/lishi",
-    "pages/appeal/appeal",
     "pages/duanzi/duanzi",
     "pages/content/content"
   ],
