@@ -4,7 +4,9 @@
     "pages/detail/detail",
     "pages/about/about",
     "pages/lishi/lishi",
-    "pages/appeal/appeal"
+    "pages/appeal/appeal",
+    "pages/duanzi/duanzi",
+    "pages/content/content"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,9 +31,9 @@
         "selectedIconPath": "./images/selected-home.png"
       },
       {
-        "pagePath": "pages/appeal/appeal",
-        "text": "休闲一刻",
-        "iconPath": "./images/basicprofile.jpeg",
+        "pagePath": "pages/duanzi/duanzi",
+        "text": "休闲段子",
+        "iconPath": "./images/wordN.png",
         "selectedIconPath": "./images/album-lt.png"
       },
       {
