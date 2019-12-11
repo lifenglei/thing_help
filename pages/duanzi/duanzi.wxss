@@ -5,5 +5,5 @@
 }
 page{
     background: #07aefc;
-    padding:0 20rpx;
+    overflow-x: hidden;
 }
