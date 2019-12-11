@@ -22,7 +22,7 @@ Page({
   requestData: function (a) {
     var that = this;
     wx.request({
-      url: 'http://api.budejie.com/api/api_open.php',
+      url: 'https://api.budejie.com/api/api_open.php',
       data: {
         a: a,
         c: 'data',

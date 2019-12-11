@@ -1,6 +1,6 @@
 <loading hidden="{{loadingHidden}}">正在加载...</loading>
 <scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
-  <block wx:for-items="{{list}}">
+  <block wx:for="{{list}}" wx:key="id">
     <!-- 分割线 -->
     <view class="divLine"></view>
     <!-- 整体item样式 -->
