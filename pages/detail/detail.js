@@ -102,6 +102,15 @@ Page({
  * 获取物流列表
  */
 function getOrderDetail(){
+  console.log(newInfo)
+  if(newInfo==''||newInfo==undefined){
+    wx.showToast({
+      title: '请填写单号',
+      icon: 'none',
+      duration: 1500
+    })
+    return
+  }
   wx.showLoading({
     title:'正在查询'
   })
@@ -123,11 +132,13 @@ function getOrderDetail(){
           item.date = item.time.substring(11,16)
           item.gTime = getDate(item.time)
           return item 
-        })
+        }),
+        showMsg:false
       })
     }else{
       this.setData({
-        showMsg:true
+        showMsg:true,
+        list:[]
       })
       wx.hideLoading()
     }

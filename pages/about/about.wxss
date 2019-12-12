@@ -1,5 +1,6 @@
 .about-wei {
     text-align: center;
+    margin-top:40rpx;
 }
 .about{
     font-size:26rpx;
@@ -26,16 +27,15 @@
 }
 
 .about-intro {
-    text-indent: 2em;
+    text-indent: 80rpx;
     font-size: 16px;
     line-height: 1.5;
-    margin: 0 24px
+    margin: 0 30rpx
 }
 
 .about-addr {
     font-size: 16px;
     line-height: 2;
-    text-indent: 2em;
 }
 
 .about-tab {

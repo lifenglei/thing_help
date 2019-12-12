@@ -1,5 +1,7 @@
  <view>
- <view class="search" bindtap="toSearch"><input placeholder="请扫描您的订单编号或者输入订单号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{result}}"/><image class="icon-saomiao" src="../../images/saomiao.png" bindtap="saomiao"/><image class="icon-sousuo" src="../../images/sousuo.png" bindtap="sousuo"/></view>
+ <view class="serch-fix">
+  <view class="search" bindtap="toSearch"><input class="type" placeholder="请扫描您的订单编号或者输入订单号" placeholder-class="phcolor" bindinput ="logistics_Input" value="{{result}}"/><image class="icon-saomiao" src="../../images/saomiao.png" bindtap="saomiao"/><image class="icon-sousuo" src="../../images/sousuo.png" bindtap="sousuo"/></view>
+ </view>
    
 <view class='g_con' wx:if="{{list.length}}">
 
