@@ -7,7 +7,7 @@
           <swiper-item class="swiperItem">
             <form  data-url="{{item.con}}"  report-submit="true">
               <view form-type="submit" class="button">
-                <image src="{{item.imageUrl}}"  data-index="{{index}}" class="slide-image" bindtap="previewImg" />
+                <image src="{{item.imageUrl}}"  data-index="{{index}}" class="slide-image" bindtap="previewImg" mode="aspectFill" />
               </view>
             </form>
           </swiper-item>
