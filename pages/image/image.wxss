@@ -1,0 +1,8 @@
+.centerContent{
+    font-size: 33rpx;
+    color:#333;
+}
+page{
+    background: #07aefc;
+    overflow-x: hidden;
+}

@@ -10,10 +10,12 @@ Page({
     this.requestData('newlist');
 
   },
+  /**
+   * 滚动到底部时加载下一页
+   */
   onReachBottom: function () {
-    console.log('onLoad')
-    var that = this
-    that.requestData('list')
+    console.log('到底部')
+    this.requestData('list');
   },
 
   /**
@@ -26,23 +28,38 @@ Page({
       data: {
         a: a,
         c: 'data',
-        // 上一页的maxtime作为加载下一页的条件，
         maxtime: this.data.maxtime,
-        type: '29',
+        type: '10',
       },
       method: 'GET',
       success: function (res) {
         that.setData({
           // 拼接数组
           list: [...that.data.list,...res.data.list].map(item=>{
-              item.passtime = item.passtime.substring(0,10)
-              return item
-          }),
+                item.passtime = item.passtime.substring(0,10)
+                return item
+            }),
           loadingHidden: true,
           maxtime: res.data.info.maxtime
         })
 
       }
+    })
+  },
+  /**
+   * 点击详情
+   */
+  goContent: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var imgArr = this.data.list.map(item=>{
+      return item.cdn_img
+    })
+    wx.previewImage({
+      current: imgArr[index],     //当前图片地址
+      urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
   onReady: function () {

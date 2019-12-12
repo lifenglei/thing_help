@@ -1,0 +1,28 @@
+<loading hidden="{{loadingHidden}}">正在加载...</loading>
+<scroll-view scroll-y="true" style="height: 100%">
+  <block wx:for-items="{{list}}" wx:key="id" wx:for-index="i">
+    <!-- 分割线 -->
+    <view class="divLine"></view>
+    <!-- 整体item样式 -->
+    <view class="containsView"  >
+      <view class="topContainsView">
+        <image class="profileImage" src="{{item.profile_image}}" />
+        <view class="topRightView">
+          <text class="topRightName">{{item.name}}</text>
+          <text class="topRightTime">{{item.passtime}}</text>
+        </view>
+      </view>
+      <text style="font-size: 30rpx">{{item.text}}</text>
+      <!-- 当时gif图 -->
+      <view wx:if="{{item.is_gif != 0}}" style="position: relative;">
+        <image class="centerContent" src="{{item.cdn_img}}" mode="aspectFill" />
+      </view>
+      <!-- 普通大图 可点击查看全部图片 -->
+      <view 
+           bindtap="goContent" data-index="{{i}}"   wx:elif="{{item.is_gif == 0}}" style="position: relative;">
+        <!-- 图片资源 -->
+        <image class="centerContent" src="{{item.cdn_img}}" mode="aspectFill" />
+      </view>
+    </view>
+  </block>
+</scroll-view>

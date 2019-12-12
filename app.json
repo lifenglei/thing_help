@@ -4,7 +4,7 @@
     "pages/detail/detail",
     "pages/about/about",
     "pages/duanzi/duanzi",
-    "pages/content/content"
+    "pages/image/image"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,10 +35,16 @@
         "selectedIconPath": "./images/album-lt.png"
       },
       {
-        "pagePath": "pages/about/about",
-        "text": "关于作者",
+        "pagePath": "pages/image/image",
+        "text": "图片",
         "iconPath": "./images/album-ajtd.png",
         "selectedIconPath": "./images/album-xxy.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于作者",
+        "iconPath": "./images/man.png",
+        "selectedIconPath": "./images/selected-man.png"
       }
      
     ]
