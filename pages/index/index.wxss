@@ -1,5 +1,8 @@
 @import "../../component/banner.wxss";
 @import "../../component/icon.wxss";
+page{
+  background-color: #f34b4c;
+}
 .body_m .com_banner {
   height: 540rpx;
   position: relative;
@@ -14,6 +17,9 @@
   display:inline-block;
   padding:10rpx;
   vertical-align: middle;
+  transition: all .5s ease-in;
+  transform: rotate(0deg);
+  transform-origin: center center;
 }
 .title{
   display:flex;
@@ -22,12 +28,12 @@
   padding-right:20rpx;
   padding-top:20rpx;
   font-size:30rpx;
-  color:#777;
+  color:#fff;
 }
 .content{
   padding:20rpx;
   font-size:26rpx;
-  color:#333;
+  color:#fff;
   font-family: PingFangSC-Regular;
 }
 
@@ -55,7 +61,7 @@
   overflow: hidden;
   padding-bottom: 10rpx;
   padding-left: 20rpx;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f34b4c;
 }
 
 .nav .li {

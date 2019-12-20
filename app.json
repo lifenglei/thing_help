@@ -8,7 +8,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#07aefc",
+    "navigationBarBackgroundColor": "#ff717a",
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
   },
@@ -25,26 +25,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./images/home.png",
-        "selectedIconPath": "./images/selected-home.png"
+        "iconPath": "./images/sd1.png",
+        "selectedIconPath": "./images/sd2.png"
       },
       {
         "pagePath": "pages/duanzi/duanzi",
         "text": "休闲段子",
-        "iconPath": "./images/wordN.png",
-        "selectedIconPath": "./images/album-lt.png"
+        "iconPath": "./images/sd3.png",
+        "selectedIconPath": "./images/sd4.png"
       },
       {
         "pagePath": "pages/image/image",
         "text": "图片",
-        "iconPath": "./images/album-ajtd.png",
-        "selectedIconPath": "./images/album-xxy.png"
+        "iconPath": "./images/sd5.png",
+        "selectedIconPath": "./images/sd6.png"
       },
       {
         "pagePath": "pages/about/about",
         "text": "关于作者",
-        "iconPath": "./images/man.png",
-        "selectedIconPath": "./images/selected-man.png"
+        "iconPath": "./images/sd7.png",
+        "selectedIconPath": "./images/sd8.png"
       }
      
     ]

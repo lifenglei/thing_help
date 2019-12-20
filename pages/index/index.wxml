@@ -19,7 +19,7 @@
     </view>
     <view class="title">
       <view>今日笑话</view>
-      <view bindtap="change">换一换<image src="../../images/change.png" class="icon-change"/></view>
+      <view bindtap="change">换一换<image src="../../images/change2.png" class="icon-change" style="transform:rotate({{rotate}}deg)"/></view>
     </view>
     <view class="content">{{joke.content}}</view>
   </view>

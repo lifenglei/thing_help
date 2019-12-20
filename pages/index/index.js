@@ -3,11 +3,13 @@
 var app = getApp()
 var requests = require('../../requests/request.js');
 var api = require('../../requests/api.js')
+var count=0;
 Page({
   data: {
     typeList:[],
     bannerList:[
     ],
+    rotate:0,
     joke:{},
     indicatorDots: true
   },
@@ -21,6 +23,13 @@ Page({
    
   },
   change(){
+    if(count==10){
+      count=0
+    }
+    count++
+    this.setData({
+      rotate:180*count
+    })
     getJoke.call(this);
   },
     /**
