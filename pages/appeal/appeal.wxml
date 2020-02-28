@@ -1,17 +1,4 @@
  <loading hidden="{{loadingHidden}}">获取中🔥...</loading>
- <!-- <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData" >
-      
-      <block wx:for="{{videoDataList}}" wx:for-item="item">
-          <view>
-             <view class="content-multimedia" hidden="{{item.videouri ? false : true}}">
-             <view class="video-mask"></view>
-                <video id="{{item.id}}" src="{{item.videouri}}" show-center-play-btn="{{false}}" poster="{{item.bimageuri}}" bindplay="videoPlay" bindended="videoEndPlay" bindpause="videoPause"  controls style="width:100%;margin:0 auto;height:{{item.height}}rpx;" ></video>
-                <view class="video-text">{{item.text}}</view>
-            </view>
-          </view>
-      </block>
-    </scroll-view> -->
-
 
     <view class="container">
   <!--首页-->
