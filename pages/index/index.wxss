@@ -35,7 +35,7 @@ page{
   font-size:28rpx;
   line-height: 56rpx;
   color:white;
-  font-family: PingFangSC-Regular;
+  font-family: PingFangSC-Thin;
   margin-top:30rpx;
   
  

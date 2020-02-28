@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/detail/detail",
-    "pages/about/about",
     "pages/duanzi/duanzi",
     "pages/image/image"
   ],
@@ -39,12 +38,6 @@
         "text": "图片",
         "iconPath": "./images/album-ajtd.png",
         "selectedIconPath": "./images/album-xxy.png"
-      },
-      {
-        "pagePath": "pages/about/about",
-        "text": "作者",
-        "iconPath": "./images/man.png",
-        "selectedIconPath": "./images/selected-man.png"
       }
      
     ]
