@@ -46,13 +46,18 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
-					"name": "详情",
-					"pathName": "pages/detail/detail",
+					"id": 0,
+					"name": "pages/appeal/appeal",
+					"pathName": "pages/appeal/appeal",
+					"query": "",
 					"scene": null
 				}
 			]

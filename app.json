@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/duanzi/duanzi",
-    "pages/image/image"
+    "pages/image/image",
+    "pages/appeal/appeal"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,6 +37,12 @@
       {
         "pagePath": "pages/image/image",
         "text": "图片",
+        "iconPath": "./images/album-ajtd.png",
+        "selectedIconPath": "./images/album-xxy.png"
+      },
+      {
+        "pagePath": "pages/appeal/appeal",
+        "text": "视频",
         "iconPath": "./images/album-ajtd.png",
         "selectedIconPath": "./images/album-xxy.png"
       }

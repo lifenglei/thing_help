@@ -1,13 +1,42 @@
-<!--index.wxml-->
-<view>
+ <loading hidden="{{loadingHidden}}">获取中🔥...</loading>
+ <!-- <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="refreshData" >
+      
+      <block wx:for="{{videoDataList}}" wx:for-item="item">
+          <view>
+             <view class="content-multimedia" hidden="{{item.videouri ? false : true}}">
+             <view class="video-mask"></view>
+                <video id="{{item.id}}" src="{{item.videouri}}" show-center-play-btn="{{false}}" poster="{{item.bimageuri}}" bindplay="videoPlay" bindended="videoEndPlay" bindpause="videoPause"  controls style="width:100%;margin:0 auto;height:{{item.height}}rpx;" ></video>
+                <view class="video-text">{{item.text}}</view>
+            </view>
+          </view>
+      </block>
+    </scroll-view> -->
 
-  <view class= "card" wx:for = "{{items}}">
-  
-    <view  data-url="{{item.imageUrl}}" bindtap = "onItemClick">
-       <image class= "image" mode="aspectFill" src="{{item.imageUrl}}"/>
-       <view class="title">{{item.title}}</view>
+
+    <view class="container">
+  <!--首页-->
+  <scroll-view class='nav-page'>
+    <view class="content-multimedia" wx:for="{{videoDataList}}" wx:key="item">
+    <view class="video-mask"></view>
+      <!-- 标题层 -->
+      <view class="video-title-box">
+        <view class='video-text'>{{item.text}}</view>
+      </view>
+
+      <!-- 视频图片层 -->
+      <view data-id="{{index}}" class="video-image-box"  bindtap="videoPlay">
+        <view class="video-cover-box">
+          <image class="video-image" src="{{item.bimageuri}}" mode="aspectFit">
+          </image>
+        </view>
+        <!-- 视频按钮 -->
+        <image class="video-image-play" src="../../images/playVideo.png" mode="scaleToFill"></image>
+      </view>
+
+      <!-- 视频播放层 -->
+      <video src="{{item.videouri}}" data-id="{{index}}"  wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls style="width:100%;margin:0 auto;height:400rpx;"></video>
+
     </view>
-
-  </view>
+  </scroll-view>
 
 </view>

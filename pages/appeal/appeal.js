@@ -1,83 +1,79 @@
-//index.js
-//获取应用实例
-var app = getApp()
-var api = require('../../requests/api.js')
-var utils = require('../../utils/util.js')
-var requests = require('../../requests/request.js')
+var detail = '../content/content'
 Page({
   data: {
-    items: [],
-    hidden: false,
-    loading: false,
-    // loadmorehidden:true,
-    plain: false
+    videoDataList: [],
+    maxtime: '',
+    loadingHidden: false
   },
+  onLoad: function (options) {
+    // 页面初始化 options为页面跳转所带来的参数
+    this.requestData('newlist');
 
-  onItemClick: function (event) {
-    var targetUrl = "/pages/lishi/lishi";
-    if (event.currentTarget.dataset.url != null)
-      targetUrl = targetUrl + "?url=" + event.currentTarget.dataset.url;
-    wx.navigateTo({
-      url: targetUrl
-    });
   },
-
-
   onReachBottom: function () {
     console.log('onLoad')
     var that = this
-    that.setData({
-      hidden: false,
-    });
-    requestData(that, mCurrentPage + 1);
+    that.requestData('list')
   },
 
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    requestData(that, mCurrentPage + 1);
-  }
+  /**
+   * 加载数据
+   */
+  requestData: function (a) {
+    var that = this;
+    wx.request({
+      url: 'https://api.budejie.com/api/api_open.php',
+      data: {
+        a: a,
+        c: 'data',
+        // 上一页的maxtime作为加载下一页的条件，
+        maxtime: this.data.maxtime,
+        type: '41',
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          // 拼接数组
+          videoDataList: [...that.data.videoDataList,...res.data.list].map(item=>{
+              item.passtime = item.passtime.substring(0,10)
+              return item
+          }),
+          loadingHidden: true,
+          maxtime: res.data.info.maxtime
+        })
 
-})
-
-/**
- * 定义几个数组用来存取item中的数据
- */
-
-var mCurrentPage = 0;
-/**
- * 请求数据
- * @param that Page的对象，用来setData更新数据
- * @param targetPage 请求的目标页码
- */
-function requestData(that, targetPage) {
-  wx.showToast({
-    title: '加载中',
-    icon: 'loading'
-  });
-  wx.request({
-    url: api.API_GET_MEIZI + targetPage,
-    header: {
-      "Content-Type": "application/json"
-    },
-    success: function (res) {
-      console.log(res)
-      if (res == null ||
-        res.data == null ||
-        res.data.data.list == null ||
-        res.data.data.list.length <= 0) {
-        console.error("god bless you...");
-        return;
       }
+    })
+  },
+  // 点击cover播放，其它视频结束
+  videoPlay: function (e) {
+    var _index = e.currentTarget.dataset.id
+    this.setData({
+      _index: _index
+    })
+    //停止正在播放的视频
+    console.log(_index)
+    // var videoContextPrev = wx.createVideoContext(_index+"")
+    // videoContextPrev.stop();
 
-      that.setData({
-        items: [...that.data.items,...res.data.data.list],
-        hidden: true,
-      });
-
-      mCurrentPage = targetPage;
-
-      wx.hideToast();
-    }
-  });
-}
+    setTimeout(function () {
+      console.log('播放')
+      //将点击视频进行播放
+      var videoContext = wx.createVideoContext(_index + "")
+      videoContext.play();
+    }, 500)
+  },
+  onReady: function () {
+    // 页面渲染完成
+  },
+  onShow: function () {
+    // 页面显示
+  },
+  onHide: function () {
+    // 页面隐藏
+  },
+  onUnload: function () {
+    // 页面关闭
+  }
+})
