@@ -1,5 +1,6 @@
     <view class="body_m">
     <view class="height">
+    <import src="../wxParse/wxParse.wxml" />
     <!-- <view class="search" bindtap="toSearch"><i class="iconfont icon-search"/> 每日福利</view> -->
     <view class="com_banner">
       <swiper circular="circular" class="com_swiper_banner" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="100">
@@ -14,13 +15,23 @@
         </block>
       </swiper>
     </view>
-    <view class="nav">
+    <!-- <view class="nav">
         <view class="li" bindtap="goTodetial"  wx:for="{{typeList}}" wx:key="logisticsId" data-menuid="{{item.logisticsId}}"><text>{{item.logisticsName}}</text></view>
-    </view>
-    <view class="title">
-      <view>今日笑话</view>
+    </view> -->
+    <!-- <view class="title">
+      <view>每日一文</view>
       <view bindtap="change">换一换<image src="../../images/change2.png" class="icon-change" style="transform:rotate({{rotate}}deg)"/></view>
+    </view> -->
+    <view class="content-wrap" v-if="meiwen.title!=''">
+    <view class="content">
+      <view class="title">
+      <view>{{meiwen.title}}</view>
+      <view>{{meiwen.author}}</view>
     </view>
-    <view class="content">{{joke.content}}</view>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+    
+    </view>
+    
   </view>
   </view>

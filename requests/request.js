@@ -40,7 +40,9 @@ function getRequest(url, data) {
         method: 'GET',
         data: data,
         header: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'appid':'mfmqdjnhoid3mjkl',
+            'app_secret':'K2xPOHhBWjZERHpNNmRyeVhUSjdmUT09'
         }
     })
 }
@@ -56,7 +58,9 @@ function postRequest(url, data) {
         method: 'POST',
         data: data,
         header: {
-            "content-type": "application/x-www-form-urlencoded"
+            "content-type": "application/x-www-form-urlencoded",
+            'appid':'mfmqdjnhoid3mjkl',
+            'app_secret':'K2xPOHhBWjZERHpNNmRyeVhUSjdmUT09'
         },
     })
 }

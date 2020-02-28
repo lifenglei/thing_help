@@ -3,6 +3,6 @@
     color:#333;
 }
 page{
-    background: #ff717a;
+    background:linear-gradient(#C3543C,#087C8F);
     overflow-x: hidden;
 }

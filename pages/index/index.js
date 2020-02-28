@@ -3,6 +3,7 @@
 var app = getApp()
 var requests = require('../../requests/request.js');
 var api = require('../../requests/api.js')
+var WxParse = require('../wxParse/wxParse.js')
 var count=0;
 Page({
   data: {
@@ -11,12 +12,14 @@ Page({
     ],
     rotate:0,
     joke:{},
-    indicatorDots: true
+    indicatorDots: true,
+    meiwen:null
   },
   onLoad: function () {
+    getMeiWen.call(this)
     getTopBanner.call(this);
-    getWuLiuList.call(this);
-    getJoke.call(this);
+    // getWuLiuList.call(this);
+    // getJoke.call(this);
     
   },
   onShow(){
@@ -87,6 +90,34 @@ function getWuLiuList(){
       }) 
     }
   }).catch(error => {
+    console.log(error)
+  })
+}
+/**
+ * 
+ * 获取每日美文
+ */
+function getMeiWen(){
+  wx.showLoading({
+    title:'获取🔥中...'
+  })
+  var url = api.ALPI_GET_MEIWEN;
+  var params = {
+    
+  };
+  requests.getRequest(url,params).then(res=>{
+    let data = res.data.data
+    let total_content = data.content
+    let that = this
+    WxParse.wxParse('article','html',total_content,that,5)
+    if (res.data.code == 200){
+      wx.hideLoading()
+      that.setData({
+        meiwen:data
+      }) 
+    }
+  }).catch(error => {
+    wx.hideLoading()
     console.log(error)
   })
 }

@@ -1,7 +1,7 @@
 @import "../../component/banner.wxss";
 @import "../../component/icon.wxss";
 page{
-  background-color: #f34b4c;
+  /* background-color: #fff; */
 }
 .body_m .com_banner {
   height: 540rpx;
@@ -24,17 +24,22 @@ page{
 .title{
   display:flex;
   justify-content: space-between;
-  padding-left:20rpx;
-  padding-right:20rpx;
-  padding-top:20rpx;
-  font-size:30rpx;
-  color:#fff;
+  /* padding-left:20rpx;
+  padding-right:20rpx; */
+  font-size:36rpx;
 }
 .content{
-  padding:20rpx;
-  font-size:26rpx;
-  color:#fff;
+  font-size:28rpx;
+  line-height: 56rpx;
+  color:white;
   font-family: PingFangSC-Regular;
+  margin-top:30rpx;
+  
+ 
+}
+.content-wrap{
+  padding:0 30rpx;
+  background:linear-gradient(#C3543C,#087C8F)
 }
 
 .search {
@@ -61,7 +66,7 @@ page{
   overflow: hidden;
   padding-bottom: 10rpx;
   padding-left: 20rpx;
-  border-bottom: 1px solid #f34b4c;
+  /* border-bottom: 1px solid #f34b4c; */
 }
 
 .nav .li {

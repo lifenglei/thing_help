@@ -1,4 +1,5 @@
 @import "./weui.wxss";
+@import "./pages/wxParse/wxParse.wxss";
 page {
   font-family: PingFangSC-Regular;
 }
