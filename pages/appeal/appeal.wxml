@@ -3,11 +3,13 @@
   <!--首页-->
   <scroll-view class='nav-page'>
     <view class="content-multimedia" wx:for="{{videoDataList}}" wx:key="item">
-    <view class="video-mask"></view>
-      <!-- 标题层 -->
-      <view class="video-title-box">
+    <view class="video-mask" style="display: {{ _index == index ? 'none' : 'block' }};">
+       <view class="video-title-box">
         <view class='video-text'>{{item.text}}</view>
       </view>
+    </view>
+      <!-- 标题层 -->
+     
 
       <!-- 视频图片层 -->
       <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
