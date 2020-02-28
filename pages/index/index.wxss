@@ -27,12 +27,13 @@ page{
   /* padding-left:20rpx;
   padding-right:20rpx; */
   font-size:36rpx;
+  font-weight:600;
 }
 .title-word{
   margin-right:30rpx;
 }
 .content{
-  font-size:28rpx;
+  font-size:30rpx;
   line-height: 56rpx;
   color:white;
   font-family: PingFangSC-Thin;
