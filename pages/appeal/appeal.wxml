@@ -1,5 +1,4 @@
  <loading hidden="{{loadingHidden}}">获取中🔥...</loading>
-
     <view class="container">
   <!--首页-->
   <scroll-view class='nav-page'>
@@ -11,7 +10,7 @@
       </view>
 
       <!-- 视频图片层 -->
-      <view data-id="{{index}}" class="video-image-box"  bindtap="videoPlay">
+      <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
         <view class="video-cover-box">
           <image class="video-image" src="{{item.bimageuri}}" mode="aspectFit">
           </image>

@@ -52,11 +52,6 @@ Page({
     this.setData({
       _index: _index
     })
-    //停止正在播放的视频
-    console.log(_index)
-    // var videoContextPrev = wx.createVideoContext(_index+"")
-    // videoContextPrev.stop();
-
     setTimeout(function () {
       console.log('播放')
       //将点击视频进行播放
