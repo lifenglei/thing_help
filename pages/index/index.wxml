@@ -25,7 +25,7 @@
     <view class="content-wrap" v-if="meiwen.title!=''">
     <view class="content">
       <view class="title">
-      <view>{{meiwen.title}}</view>
+      <view class="title-word">{{meiwen.title}}</view>
       <view>{{meiwen.author}}</view>
     </view>
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />

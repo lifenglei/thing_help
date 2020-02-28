@@ -23,10 +23,13 @@ page{
 }
 .title{
   display:flex;
-  justify-content: space-between;
+  justify-content: center;
   /* padding-left:20rpx;
   padding-right:20rpx; */
   font-size:36rpx;
+}
+.title-word{
+  margin-right:30rpx;
 }
 .content{
   font-size:28rpx;

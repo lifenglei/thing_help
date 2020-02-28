@@ -107,6 +107,7 @@ function getMeiWen(){
   };
   requests.getRequest(url,params).then(res=>{
     let data = res.data.data
+    data.author = '文/'+ data.author
     let total_content = data.content
     let that = this
     WxParse.wxParse('article','html',total_content,that,5)

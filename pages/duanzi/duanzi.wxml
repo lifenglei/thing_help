@@ -1,4 +1,4 @@
-<loading hidden="{{loadingHidden}}">正在加载...</loading>
+<loading hidden="{{loadingHidden}}">获取中🔥...</loading>
 <scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
   <block wx:for="{{list}}" wx:key="id">
     <!-- 分割线 -->
