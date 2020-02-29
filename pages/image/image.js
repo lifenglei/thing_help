@@ -3,11 +3,12 @@ Page({
   data: {
     list: [],
     maxtime: '',
-    loadingHidden: false
+    loadingHidden: false,
+    page:1,
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
-    this.requestData('newlist');
+    this.requestData('list');
 
   },
   /**
@@ -15,6 +16,16 @@ Page({
    */
   onReachBottom: function () {
     console.log('到底部')
+    this.setData({
+      page:this.data.page+1
+    })
+    this.requestData('list');
+  },
+  /**
+   * 滚动到底部时加载下一页
+   */
+  onPullDownRefresh: function () {
+    console.log('上拉')
     this.requestData('list');
   },
 
@@ -30,6 +41,7 @@ Page({
         c: 'data',
         maxtime: this.data.maxtime,
         type: '10',
+        page:this.data.page
       },
       method: 'GET',
       success: function (res) {

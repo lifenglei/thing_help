@@ -2,29 +2,44 @@
     <view class="container">
   <!--首页-->
   <scroll-view class='nav-page'>
-    <view class="content-multimedia" wx:for="{{videoDataList}}" wx:key="item">
-    <view class="video-mask" style="display: {{ _index == index ? 'none' : 'block' }};">
-       <view class="video-title-box">
-        <view class='video-text'>{{item.text}}</view>
-      </view>
-    </view>
+       <view class="content-multimedia" wx:for="{{videoDataList}}" wx:key="item">
+      <view class="user-info">
+          <view class="user-head">
+          <image class="lazy-loaded" src="{{item.profile_image}}" />
+          </view>
+          <view class="user-name">
+                <view class="name">
+          {{item.name}}</view>
+          </view>
+      
+          <view class="user-gps">
+          {{item.passtime}}</view>
+          <view class="live-see">
+          <text class="play-count">{{item.playcount||1}}</text>人观看</view>
+       </view>
+          <view class="video-mask" style="display: {{ _index == index ? 'none' : 'block' }};">
+            <view class="video-title-box">
+              <view class='video-text'>{{item.text}}</view>
+            </view>
+          </view>
       <!-- 标题层 -->
      
 
-      <!-- 视频图片层 -->
-      <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
-        <view class="video-cover-box">
-          <image class="video-image" src="{{item.bimageuri}}" mode="aspectFit">
-          </image>
-        </view>
-        <!-- 视频按钮 -->
-        <image class="video-image-play" src="../../images/playVideo.png" mode="scaleToFill"></image>
-      </view>
+          <!-- 视频图片层 -->
+          <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+            <view class="video-cover-box">
+              <image class="video-image" src="{{item.bimageuri}}" mode="aspectFit">
+              </image>
+            </view>
+            <!-- 视频按钮 -->
+            <image class="video-image-play" src="../../images/playVideo.png" mode="scaleToFill"></image>
+          </view>
 
-      <!-- 视频播放层 -->
-      <video src="{{item.videouri}}" data-id="{{index}}"  wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls style="width:100%;margin:0 auto;height:400rpx;"></video>
+        <!-- 视频播放层 -->
+        <video src="{{item.videouri}}" data-id="{{index}}"  wx:if="{{_index == index}}" objectFit='contain' autoplay='true' controls style="width:100%;margin:0 auto;height:400rpx;"></video>
 
-    </view>
+  </view>
+ 
   </scroll-view>
 
 </view>
