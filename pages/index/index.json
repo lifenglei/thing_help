@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "美文"
+  "navigationBarTitleText": "美文",
+  "enablePullDownRefresh":true
 }

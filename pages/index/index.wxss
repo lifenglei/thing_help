@@ -2,10 +2,20 @@
 @import "../../component/icon.wxss";
 page{
   /* background-color: #fff; */
+  background:#fff;
+}
+.button{
+  overflow: hidden;
 }
 .body_m .com_banner {
   height: 540rpx;
   position: relative;
+}
+.changeIcon{
+  position: absolute;
+  top: 560rpx;
+  z-index: 2;
+  right: 20rpx;
 }
 .clear {
   clear: both;
@@ -38,11 +48,19 @@ page{
   color:white;
   font-family: PingFangSC-Thin;
   margin-top:30rpx;
-  
- 
+}
+/* 返回顶部 */
+.goTop{
+  height: 64rpx;
+  width: 64rpx;
+  position: fixed;
+  bottom: 50rpx;
+  background: rgba(0,0,0,.3);
+  right: 30rpx;
+  border-radius: 50%;
 }
 .content-wrap{
-  padding:0 30rpx;
+  padding-left:30rpx;
   background:linear-gradient(#C3543C,#087C8F)
 }
 

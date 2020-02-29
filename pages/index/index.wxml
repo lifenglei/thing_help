@@ -18,10 +18,8 @@
     <!-- <view class="nav">
         <view class="li" bindtap="goTodetial"  wx:for="{{typeList}}" wx:key="logisticsId" data-menuid="{{item.logisticsId}}"><text>{{item.logisticsName}}</text></view>
     </view> -->
-    <!-- <view class="title">
-      <view>每日一文</view>
-      <view bindtap="change">换一换<image src="../../images/change2.png" class="icon-change" style="transform:rotate({{rotate}}deg)"/></view>
-    </view> -->
+    <image src='../../images/rock.png' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+      <!-- <view bindtap="change" class="changeIcon"><image src="../../images/change2.png" class="icon-change" style="transform:rotate({{rotate}}deg)"/></view> -->
     <view class="content-wrap" v-if="meiwen.title!=''">
     <view class="content">
       <view class="title">

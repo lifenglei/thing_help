@@ -3,8 +3,7 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/duanzi/duanzi",
-    "pages/image/image",
-    "pages/appeal/appeal"
+    "pages/image/image"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,31 +19,25 @@
     "borderStyle": "black",
     "color": "#000",
     "backgroundColor": "#fff",
-    "selectedColor": "#0123",
+    "selectedColor": "#2D6E7F",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "美文",
-        "iconPath": "./images/home.png",
-        "selectedIconPath": "./images/selected-home.png"
+        "iconPath": "./images/lfl-tab1.png",
+        "selectedIconPath": "./images/lfl-tab1-se.png"
       },
       {
         "pagePath": "pages/duanzi/duanzi",
         "text": "段子",
-        "iconPath": "./images/sd8.png",
-        "selectedIconPath": "./images/album-lt.png"
+        "iconPath": "./images/lfl-tab2.png",
+        "selectedIconPath": "./images/lfl-tab2-se.png"
       },
       {
         "pagePath": "pages/image/image",
         "text": "图片",
-        "iconPath": "./images/album-ajtd.png",
-        "selectedIconPath": "./images/album-xxy.png"
-      },
-      {
-        "pagePath": "pages/appeal/appeal",
-        "text": "视频",
-        "iconPath": "./images/album-ajtd.png",
-        "selectedIconPath": "./images/album-xxy.png"
+        "iconPath": "./images/lfl-tab3.png",
+        "selectedIconPath": "./images/lfl-tab3-se.png"
       }
      
     ]

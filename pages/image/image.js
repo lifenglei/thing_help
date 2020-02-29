@@ -22,14 +22,6 @@ Page({
     this.requestData('list');
   },
   /**
-   * 滚动到底部时加载下一页
-   */
-  onPullDownRefresh: function () {
-    console.log('上拉')
-    this.requestData('list');
-  },
-
-  /**
    * 加载数据
    */
   requestData: function (a) {
