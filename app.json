@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/detail/detail",
     "pages/duanzi/duanzi",
-    "pages/image/image"
+    "pages/image/image",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,6 +38,12 @@
         "text": "图片",
         "iconPath": "./images/lfl-tab3.png",
         "selectedIconPath": "./images/lfl-tab3-se.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的",
+        "iconPath": "./images/man.png",
+        "selectedIconPath": "./images/selected-man.png"
       }
      
     ]

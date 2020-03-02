@@ -1,17 +1,63 @@
-<!--pages/aboutme/aboutme.wxml-->
-<view class="about">
-    <view class="about-wei">    
-      <view  class="about-img"><image src="{{img}}"  class="in-img" background-size="cover"></image></view>
-      <view class="about-title">{{title}}</view>
-    </view>
-
-    <view class="about-intro"> 
-      <view>{{intro}}</view>
-      <view class="about-addr">
-        <view>{{email}}</view>
-        <view>{{phone}}</view>
-         <view>{{comment}}</view>
+<view class="content">
+  <view class="home-wrap">
+  <view class="home-info"bindtap="goEditor" >
+     <view class="weui-panel__bd">
+     <button wx:if="{{isGetInfo}}" class="shou-quan" open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+      <view>
+        <image  class="wechat"src="../../images/wechat.png" />
+        点击微信登录
       </view>
+     </button>
+      <view class="user-info" wx:else>
+          <view 
+            class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="avatar" 
+              src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLsunNmibxLnoYafZprP5goVfZkuPoPsNvianXgkJAlLuJbzX3pfWxz3S20CDsSOxLo2fAnfBMkB0Q/132"
+              />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title" class="title-wrap">
+                <text>jquery</text>
+              </view>
+          </view>
+      </view>
+  </view>
+  </view>         
+</view>
+<view class="home-li mr30">
+  <view class="line">
+    <view class="strip-w">
+      <image 
+      src="//static.soyoung.com/sy-pre/kefu-1583136600632.png"
+      class="help-icon"></image>
+      <text class="pr10">客服</text>
     </view>
+    <text class="link"></text>
+  </view>
+  <button class='contact-btn' open-type='contact'>a</button> 
+</view>
+<view class="home-li mr30">
+  <view class="line">
+    <view class="strip-w">
+      <image 
+      src="//static.soyoung.com/sy-pre/share-1583136600632.png"
+      class="help-icon"></image>
+      <text class="pr10">分享小程序</text>
+    </view>
+    <text class="link"></text>
+  </view>
+    <button class='contact-btn' data-shareinfo ="{{shareModel}}" open-type='share'>a</button> 
+</view>
+<view class="home-li mr30">
+  <view class="line">
+    <view class="strip-w" bindtap="clearInfo">
+      <image 
+      src="//static.soyoung.com/sy-pre/cashimg-1583140200641.png"
+      class="help-icon"></image>
+      <text class="pr10">清除缓存</text>
+    </view>
+    <text class="link"></text>
+  </view>
+</view>
 
 </view>

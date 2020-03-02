@@ -164,8 +164,9 @@ function getMeiWen(){
       }) 
     }
   }).catch(error => {
+    console.log(err)
     wx.hideLoading()
-    console.log(error)
+    getMeiWen()
   })
 }
 /**

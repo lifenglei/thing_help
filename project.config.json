@@ -55,8 +55,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/appeal/appeal",
-					"pathName": "pages/appeal/appeal",
+					"name": "我的",
+					"pathName": "pages/about/about",
 					"query": "",
 					"scene": null
 				}
