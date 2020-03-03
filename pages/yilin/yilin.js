@@ -41,7 +41,7 @@ Page({
   var params = {
     page:this.data.page,
     num:10,
-    cate:'yilin'
+    cate:'random'
   };
   requests.getRequest(url,params).then(res=>{
     if(res.data.code==200){
@@ -60,7 +60,6 @@ Page({
   }).catch(error => {
     console.log(err)
     wx.hideLoading()
-    getMeiWen()
   })
   },
   /**
