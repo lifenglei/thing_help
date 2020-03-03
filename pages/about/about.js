@@ -2,7 +2,7 @@ const app = getApp()
 let self;
 Page({
   data: {//这里是为页面显示准备数据，不建议直接写在页面里
-    avrtar:'',
+    avatar:'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLsunNmibxLnoYafZprP5goVfZkuPoPsNvianXgkJAlLuJbzX3pfWxz3S20CDsSOxLo2fAnfBMkB0Q/132',
     nickName:'',
     gender:null,
     isGetInfo:true,
@@ -72,7 +72,7 @@ Page({
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     self.setData({
-      avrtar:app.globalData.userInfo.avatarUrl,
+      avatar:app.globalData.userInfo.avatarUrl,
       nickName:app.globalData.userInfo.nickName,
       gender:app.globalData.userInfo.gender,
       isGetInfo:false

@@ -12,12 +12,12 @@
           <view 
             class="weui-media-box__hd weui-media-box__hd_in-appmsg">
               <image class="avatar" 
-              src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLsunNmibxLnoYafZprP5goVfZkuPoPsNvianXgkJAlLuJbzX3pfWxz3S20CDsSOxLo2fAnfBMkB0Q/132"
+              src="{{avatar}}"
               />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title" class="title-wrap">
-                <text>jquery</text>
+                <text>{{nickName}}</text>
               </view>
           </view>
       </view>
