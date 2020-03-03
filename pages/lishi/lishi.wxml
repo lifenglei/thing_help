@@ -5,12 +5,13 @@
             <view class="content">
                 <view class="title">
                     <view class="title-word">{{yilin.title}}</view>
-                    <view>文/{{yilin.author}}</view>
+                    <view>文/{{yilin.author||'未知'}}</view>
                 </view>
                 <template is="wxParse" data="{{wxParseData:article.nodes}}" />
             </view>
-        </view>
         <view class="done">--看完了--^^</view>
+        </view>
+ 
         
     </view>
   </view>
