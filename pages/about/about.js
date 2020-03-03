@@ -6,6 +6,7 @@ Page({
     nickName:'',
     gender:null,
     isGetInfo:true,
+    show:false,
     shareModel:{
       title:'何当共阅西窗文',
       path:'pages/index/index',
@@ -16,14 +17,23 @@ Page({
 
   onLoad: function () {//页面加载初始化函数
     self = this
-    console.log(self)
-    console.log(app.globalData.userInfo)
     if (app.globalData.userInfo) {//获取微信账号登录。。。这里实际没用到相关的数据，纯粹为了加载下能看看装个逼。。。
       self.setData({
         userInfo: app.globalData.userInfo,
         isGetInfo: false
       })
     } 
+    wx.getSystemInfo({
+      success:function(res){
+        self.setData({
+          windowW:res.windowWidth,
+          windowH:res.windowHeight
+        })
+      }
+    })
+  },
+  getBG(){
+
   },
   clearInfo(){
     wx.showModal({

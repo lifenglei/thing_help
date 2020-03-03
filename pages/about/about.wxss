@@ -113,4 +113,54 @@ page{
   .strip-w{
       width:100%;
   }
+
+
+
+  .btn{
+
+    text-align: center;
+    
+    margin-top: 300rpx;
+    
+    }
+    
+    .canvas-box{
+    
+    background: #999999;
+    
+    position: fixed;
+    
+    top: 0;
+    
+    }
+    
+    .btnSave{
+    
+    z-index: 11111;
+    
+    font-size: 26rpx;
+    
+    background: #564d60;
+    
+    color: #ffffff;
+    
+    width: 200rpx;
+    
+    height: 70rpx;
+    
+    line-height: 70rpx;
+    
+    border-radius: 10rpx;
+    
+    text-align: center;
+    
+    position: absolute;
+    
+    bottom: 5rpx;
+    
+    left: 50%;
+    
+    margin-left: -100rpx;
+    
+    }
   

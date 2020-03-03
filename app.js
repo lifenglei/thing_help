@@ -18,7 +18,8 @@ App({
 
     globalData: {
         userInfo: null,
-        index:0
+        index:0,
+        content:null
     },
     onLaunch:function(){
         this.getNewVersion()

@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/duanzi/duanzi",
     "pages/image/image",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/yilin/yilin",
+    "pages/lishi/lishi"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,6 +40,12 @@
         "text": "图片",
         "iconPath": "./images/lfl-tab3.png",
         "selectedIconPath": "./images/lfl-tab3-se.png"
+      },
+      {
+        "pagePath": "pages/yilin/yilin",
+        "text": "意林",
+        "iconPath": "./images/lfl-tab4.png",
+        "selectedIconPath": "./images/lfl-tab4-se.png"
       },
       {
         "pagePath": "pages/about/about",

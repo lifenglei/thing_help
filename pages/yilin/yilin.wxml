@@ -1,0 +1,23 @@
+<loading hidden="{{loadingHidden}}">获取中🔥...</loading>
+ <!-- <import src="../wxParse/wxParse.wxml" /> -->
+<scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
+  <block wx:for="{{list}}" wx:key="id" >
+    <!-- 分割线 -->
+    <view class="divLine"></view>
+    <!-- 整体item样式 -->
+    <view class="containsView" bindtap="goDetail" data-content="{{item}}">
+    <!--顶部样式-->
+      <view class="topContainsView">
+        <view class="profileImage" style="background:{{item.color}};">文</view>
+        <view class="topRightView">
+          <text class="topRightName">{{item.title}}</text>
+          <text class="topRightTime">{{item.author||'匿名'}}</text>
+        </view>
+      </view>
+      <!-- 中间内容 -->
+      <!-- <text class="centerContent">人们杀死了我的阿尔贝蒂娜</text> -->
+
+    </view>
+  </block>
+    <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" hidden="{{loadingHidden}}"  /> -->
+</scroll-view>

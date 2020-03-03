@@ -1,19 +1,16 @@
-<!--image.wxml-->
-<view >
-    <loading hidden="{{hidden}}" >
-     {{loadingText}}
-    </loading>
-
-    <toast hidden="{{toastHidden}}" bindchange="onToastChanged">
-        {{toastText}}
-    </toast>
-
-<view bindlongtap = "onlongclick">
-    <image class = "bigImage" mode="aspectFill" src="{{url}}" />
-</view>
-
-<modal title="是否保存？" confirm-text="保存" cancel-text="取消" data-url="{{url}}" 
-    hidden="{{modalHidden}}" bindconfirm="onSaveClick" bindcancel="onCancelClick">
-</modal>
-
-</view>
+    <view class="body_m">
+        <view class="height">
+        <import src="../wxParse/wxParse.wxml" />
+        <view class="content-wrap">
+            <view class="content">
+                <view class="title">
+                    <view class="title-word">{{yilin.title}}</view>
+                    <view>文/{{yilin.author}}</view>
+                </view>
+                <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+            </view>
+        </view>
+        <view class="done">--看完了--^^</view>
+        
+    </view>
+  </view>

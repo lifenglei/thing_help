@@ -11,5 +11,6 @@ module.exports={
   API_GET_FULI:API_BASE+'/api/image/girl/list/random',//每日福利
   API_GET_JOKE:API_BASE+'/api/jokes/list/random',//笑话
   API_GET_MEIZI:API_BASE+'/api/image/girl/list?page=',//妹子
-  ALPI_GET_MEIWEN:ALPI_BASE+'/api/mryw/random'
+  ALPI_GET_MEIWEN:ALPI_BASE+'/api/mryw/random',//美文
+  ALPI_GET_YILIN:ALPI_BASE+'/api/mryw/list'//意林
 }

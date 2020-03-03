@@ -2,6 +2,7 @@
 .centerContent{
     font-size: 33rpx;
     color:#333;
+    flex:1;
 }
 page{
     background:linear-gradient(#C3543C,#087C8F);
@@ -16,6 +17,7 @@ page{
     color:#333;
     border-radius: 4px;
     margin:0 auto;
+    display:flex;
   }
   /*头部整体样式*/
   .topContainsView{
@@ -23,15 +25,19 @@ page{
     flex-direction: row;
     align-items: center;
     margin-bottom: 18rpx;
+    flex:1;
   }
   
   /**
    * 头像样式
   */
   .profileImage{
-    width: 60rpx;
-    height: 60rpx;
-    border-radius: 30rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    color:#fff;
+    text-align:center;
+    line-height:80rpx;
   }
   
   /*头部显示名字和时间整体样式*/
