@@ -38,22 +38,6 @@
 </view>
 <view class="home-li mr30">
   <view class="line">
-    <view class="strip-w">
-      <image 
-      src="//static.soyoung.com/sy-pre/share-1583136600632.png"
-      class="help-icon"></image>
-      <text class="pr10">生成海报</text>
-    </view>
-    <text class="link"></text>
-  </view>
-  <view wx:if="{{ show }}" class="canvas-box">
-<canvas style="width: {{ windowW }}px; height: {{ windowH }}px;" canvas-id="firstCanvas"></canvas>
-<view bindtap="daochu" class="btnSave">点击保存</view>
-</view>
-    <!-- <button class='contact-btn' data-shareinfo ="{{shareModel}}" open-type='share'>a</button>  -->
-</view>
-<view class="home-li mr30">
-  <view class="line">
     <view class="strip-w" bindtap="clearInfo">
       <image 
       src="//static.soyoung.com/sy-pre/cashimg-1583140200641.png"
@@ -62,6 +46,29 @@
     </view>
     <text class="link"></text>
   </view>
+</view>
+<view class="home-li mr30" bindtap="makePic">
+  <view class="line">
+    <view class="strip-w">
+      <image 
+      src="//static.soyoung.com/sy-pre/share-1583136600632.png"
+      class="help-icon"></image>
+      <text class="pr10">生成海报</text>
+    </view>
+    <text class="link"></text>
+  </view>
+<view class="mask" wx:if="{{ show }}">
+    <view  class="canvas-box">
+      <canvas class="cv-ct-canvas" canvas-id="firstCanvas" style="left:{{left}}"></canvas>
+      <view class="btn-wrap">
+      <view catchtap="close" class="btnSave2">关闭</view>
+      <view catchtap="daochu" class="btnSave1">保存</view>
+          
+      </view>
+    
+    </view>
+</view>
+    <!-- <button class='contact-btn' data-shareinfo ="{{shareModel}}" open-type='share'>a</button>  -->
 </view>
 
 </view>
