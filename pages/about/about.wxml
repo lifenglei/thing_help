@@ -36,17 +36,6 @@
   </view>
   <button class='contact-btn' open-type='contact'>a</button> 
 </view>
-<view class="home-li mr30">
-  <view class="line">
-    <view class="strip-w" bindtap="clearInfo">
-      <image 
-      src="//static.soyoung.com/sy-pre/cashimg-1583140200641.png"
-      class="help-icon"></image>
-      <text class="pr10">清除缓存</text>
-    </view>
-    <text class="link"></text>
-  </view>
-</view>
 <view class="home-li mr30" bindtap="makePic">
   <view class="line">
     <view class="strip-w">
@@ -63,12 +52,21 @@
       <view class="btn-wrap">
       <view catchtap="close" class="btnSave2">关闭</view>
       <view catchtap="daochu" class="btnSave1">保存</view>
-          
       </view>
-    
     </view>
 </view>
     <!-- <button class='contact-btn' data-shareinfo ="{{shareModel}}" open-type='share'>a</button>  -->
+</view>
+<view class="home-li mr30">
+  <view class="line">
+    <view class="strip-w" bindtap="clearInfo">
+      <image 
+      src="//static.soyoung.com/sy-pre/cashimg-1583140200641.png"
+      class="help-icon"></image>
+      <text class="pr10">清除缓存</text>
+    </view>
+    <text class="link"></text>
+  </view>
 </view>
 
 </view>

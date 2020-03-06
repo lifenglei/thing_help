@@ -83,12 +83,12 @@ Page({
     //绘制头像
     ctx.arc(avatarurl_width / 2 + avatarurl_x, avatarurl_heigth / 2 + avatarurl_y, avatarurl_width / 2, 0, Math.PI * 2, false);
     ctx.clip(); //画了圆 再剪切  原始画布中剪切任意形状和尺寸。一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内
-    ctx.drawImage(avatarUrl, avatarurl_x, avatarurl_y, avatarurl_width, avatarurl_heigth); // 推进去图片 
+    ctx.drawImage(avatar, avatarurl_x, avatarurl_y, avatarurl_width, avatarurl_heigth); // 推进去图片 
     ctx.restore()
     // 写入名字
     ctx.setFontSize(18);
     ctx.setFillStyle("#FFF9F0");
-    ctx.fillText(name, 88, 250);
+    ctx.fillText(name, 50, 250);
     ctx.fillText('何当共阅西窗文', 130, 60);
     ctx.setFontSize(15);
     ctx.setFillStyle("#FFF9F0");
