@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/duanzi/duanzi",
-    "pages/image/image",
     "pages/about/about",
     "pages/yilin/yilin",
     "pages/lishi/lishi"
@@ -28,18 +26,6 @@
         "text": "美文",
         "iconPath": "./images/lfl-tab1.png",
         "selectedIconPath": "./images/lfl-tab1-se.png"
-      },
-      {
-        "pagePath": "pages/duanzi/duanzi",
-        "text": "段子",
-        "iconPath": "./images/lfl-tab2.png",
-        "selectedIconPath": "./images/lfl-tab2-se.png"
-      },
-      {
-        "pagePath": "pages/image/image",
-        "text": "图片",
-        "iconPath": "./images/lfl-tab3.png",
-        "selectedIconPath": "./images/lfl-tab3-se.png"
       },
       {
         "pagePath": "pages/yilin/yilin",
