@@ -38,11 +38,12 @@ function getRequest(url, data) {
     return getRequest({
         url: url,
         method: 'GET',
-        data: data,
+      data: data,
         header: {
             'Content-Type': 'application/json',
             'app_id':'mfmqdjnhoid3mjkl',
-            'app_secret':'K2xPOHhBWjZERHpNNmRyeVhUSjdmUT09'
+          'app_secret': 'K2xPOHhBWjZERHpNNmRyeVhUSjdmUT09',
+          'token':   'CQn18X9tGFjtZtY3',
         }
     })
 }
@@ -60,7 +61,8 @@ function postRequest(url, data) {
         header: {
             "content-type": "application/x-www-form-urlencoded",
             'app_id':'mfmqdjnhoid3mjkl',
-            'app_secret':'K2xPOHhBWjZERHpNNmRyeVhUSjdmUT09'
+          'app_secret': 'K2xPOHhBWjZERHpNNmRyeVhUSjdmUT09',
+          'token':   'CQn18X9tGFjtZtY3',
         },
     })
 }

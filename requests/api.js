@@ -2,7 +2,7 @@
  * 请求地址
  */
 const API_BASE = "https://www.mxnzp.com";//小程序合法request请求地址
-const ALPI_BASE = "https://v1.alapi.cn"
+const ALPI_BASE = "https://v2.alapi.cn"
 module.exports={
   API_GET_TypeList : API_BASE +'/api/logistics/type/list',//查询支持的所有快递公司编号列表
   API_GET_TypeSearch: API_BASE +'/api/logistics/type/search',//根据公司名称查询对应的公司编号
